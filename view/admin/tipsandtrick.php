@@ -332,7 +332,7 @@ if ($_SESSION['role'] != 'admin') {
                 </div>
                 <div class="navbutton">
                     <a href="/internsight/view/admin/dashboard.php"><button>Home</button></a>
-                    <a href="/internsight/view/admin/carikerja.php"><button>Cari Kerja</button></a>
+                    <a href="/internsight/view/admin/internship.php"><button>Cari Kerja</button></a>
                     <a href="/internsight/view/admin/tipsandtrick.php"><button>Tips & Tricks</button></a>
                     <a href="/internsight/view/admin/tentangkami.php"><button>Tentang Kami</button></a>
                     <a href="/internsight/view/admin/admin.php"><button>Admin</button></a>

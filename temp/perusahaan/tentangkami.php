@@ -247,7 +247,7 @@
                 </div>
                 <div class="navbutton">
                     <a href="pelamar.php"><button>Home</button></a>
-                    <a href="carikerja.php"><button>Cari Kerja</button></a> 
+                    <a href="internship.php"><button>Cari Kerja</button></a> 
                     <a href="tipsandtrick.php"><button>Tips & Tricks</button></a>
                     <a href="tentangkami.php"><button>Tentang Kami</button></a>
                 </div>

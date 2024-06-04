@@ -1,3 +1,11 @@
+<?php
+session_start();
+if ($_SESSION['role'] !== 'pelamar') {
+    $_SESSION['error'] = 'You must be logged in as "applicant" to access this page.';
+    header('Location: /internsight/view/login.php');
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -246,12 +254,12 @@
                     </div>
                 </div>
                 <div class="navbutton">
-                    <a href="/internsight/view/admin/dashboard.php"><button>Home</button></a>
-                    <a href="/internsight/view/admin/carikerja.php"><button>Cari Kerja</button></a> 
-                    <a href="/internsight/view/admin/tipsandtrick.php"><button>Tips & Tricks</button></a>
-                    <a href="/internsight/view/admin/tentangkami.php"><button>Tentang Kami</button></a>
+                    <a href="/internsight/view/pelamar/dashboard.php"><button>Home</button></a>
+                    <a href="/internsight/view/pelamar/internship.php"><button>Cari Kerja</button></a> 
+                    <a href="/internsight/view/pelamar/tipsandtrick.php"><button>Tips & Tricks</button></a>
+                    <a href="/internsight/view/pelamar/tentangkami.php"><button>Tentang Kami</button></a>
                 </div>
-                <a href="admin.php">
+                <a href="/internsight/public/logout.php">
                     <div class="navbox">
                         <span>
                             <p>Logout</p>

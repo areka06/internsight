@@ -8,20 +8,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $password = $_POST['password']; // Store plain text password
 
     try {
-        $stmt = $pdo->prepare('INSERT INTO akun_perusahaan (nama_perusahaan, username, password) VALUES (?, ?, ?)');
+        $stmt = $conn->prepare('INSERT INTO akun_perusahaan (nama_perusahaan, username, password) VALUES (?, ?, ?)');
         if ($stmt->execute([$nama_perusahaan, $username, $password])) {
             $_SESSION['success'] = 'Registration successful';
             header('Location: ../view/login.php');
             exit();
         }
-    } catch (PDOException $e) {
+    } catch (Exception $e) {
+        // Check if the error code indicates a duplicate entry
         if ($e->getCode() == 23000) {
             $_SESSION['error'] = 'Username already exists';
-            header('Location: ../view/perusahaan/register.php');
+            header('Location: ../view/pelamar/register.php');
             exit();
         } else {
-            echo "Error: " . $e->getMessage();
+            // Redirect back to the registration page for other errors
+            $_SESSION['error'] = 'Username already exists';
+            header('Location: ../view/pelamar/register.php');
+            exit();
         }
-    }
-}
+    }    
+}   
 ?>

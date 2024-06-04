@@ -1,10 +1,3 @@
-<?php
-session_start();
-if ($_SESSION['role'] != 'admin') {
-    header("Location: ../public/index.php");
-    exit();
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -153,7 +146,7 @@ if ($_SESSION['role'] != 'admin') {
         height: 750px;
         border-radius: 30px;
         background-color: black;
-        background-image: url("Asset/gauze.jpeg");
+        background-image: url("/internsight/assets/gauze.jpeg");
         background-repeat: no-repeat;
         background-size: cover;
         object-fit: cover;
@@ -377,7 +370,7 @@ if ($_SESSION['role'] != 'admin') {
             <div class="navbar">
                 <div class="logo">
                     <div>
-                        <img src="Asset/logo.png" class="logoimg">
+                        <img src="/internsight/assets/logo.png" class="logoimg">
                     </div>
                     <div>
                         <p1>InternSight</p1>
@@ -385,16 +378,15 @@ if ($_SESSION['role'] != 'admin') {
                     </div>
                 </div>
                 <div class="navbutton">
-                    <a href="/internsight/view/admin/dashboard.php"><button>Home</button></a>
-                    <a href="/internsight/view/admin/carikerja.php"><button>Cari Kerja</button></a> 
-                    <a href="/internsight/view/admin/tipsandtrick.php"><button>Tips & Tricks</button></a>
-                    <a href="/internsight/view/admin/tentangkami.php"><button>Tentang Kami</button></a>
-                    <a href="/internsight/view/admin/admin.php"><button>Admin</button></a>
+                    <a href="dashboard.php"><button>Home</button></a>
+                    <a href="internship.php"><button>Cari Kerja</button></a> 
+                    <a href="tipsandtrick.php"><button>Tips & Tricks</button></a>
+                    <a href="tentangkami.php"><button>Tentang Kami</button></a>
                 </div>
                 <a href="login.php">
                     <div class="navbox">
                         <span>
-                            <p>Logout</p>
+                            <p>Login</p>
                         </span>
                     </div>
                 </a>
@@ -404,11 +396,11 @@ if ($_SESSION['role'] != 'admin') {
         <section>
             <div class="firstbox">
                 <span>
-                    <p>Selamat Mencari Kerja,</p>
+                    <p>Selamat Mencari Internship,</p>
                     <div class="head2">
-                        <img src="Asset/sparkle.png" class="sparkle">
+                        <img src="/internsight/assets/sparkle.png" class="sparkle">
                         <p> Insighters!</p>
-                        <img src="Asset/sparkle.png" class="sparkle">
+                        <img src="/internsight/assets/sparkle.png" class="sparkle">
                     </div>
                     <div class="teamcontainer">
                         <!-- <div class="card1">
@@ -426,10 +418,10 @@ if ($_SESSION['role'] != 'admin') {
             <p>Lowongan Kerja Untuk Insighters</p>
         </span>
         <section class="main">
+        <a href="../view/pelamar/berita.php">
         <div class="wrapper">
             <div class="left-col">
                 <!-- // status wrappers -->
-
                 <div class="post">
                     <div class="info">
                         <div class="user">
@@ -489,6 +481,7 @@ if ($_SESSION['role'] != 'admin') {
                 <!-- // +5 more post elements -->
             </div>
         </div>
+        </a>
         </section>
     </div>
     </section>

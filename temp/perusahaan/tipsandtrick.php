@@ -11,6 +11,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
     <!-- tailwind -->
+    <!-- bootstrap -->
+   
 
 </head>
 <style>
@@ -24,9 +26,11 @@
         margin-left: 20px;
         margin-right: 20px;
     }
-    a{
+
+    a {
         text-decoration: none;
     }
+
     .container {
         margin-top: 20px
     }
@@ -212,11 +216,12 @@
     /* second box */
     .secondbox {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
+        gap: 100px;
         justify-content: center;
         align-items: center;
         width: 100%;
-        height: 2200px;
+        height: 800px;
     }
 
     .secondbox span p {
@@ -230,138 +235,79 @@
         letter-spacing: -4px;
     }
 
-    /* newspost */
-    .post{
-    width: 100%;
-    height: auto;
-    background: #fff;
-    border: 1px solid #dfdfdf;
-    border-radius: 10px;
-    margin-top: 40px;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    font-family: 'poppins', sans-serif;
-}
+    .cardtips {
+        font-family: 'poppins', sans-serif;
+        background-color: #fff;
+        padding: 20px;
+        height: 450px;
+        border-radius: 20px;
+        box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+    }
 
-.info{
-    width: 100%;
-    height: 60px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 20px;
-}
+    .cards {
+        display: flex;
+        flex-direction: row;
+        font-family: 'poppins', sans-serif;
+        background-color: #fff;
+        padding: 20px;
+        height: 450px;
+        border-radius: 20px;
+        gap: 100px;
+    }
 
-.info .username{
-    width: auto;
-    font-weight: bold;
-    color: #000;
-    font-size: 14px;
-    margin-left: 10px;
-}
+    .cards .red {
+        background-color: #007e9e;
+    }
 
-.info .options{
-    height: 10px;
-    cursor: pointer;
-}
+    .cards .blue {
+        background-color: #0062ff;
+    }
 
-.info .user{
-    display: flex;
-    align-items: center;
-}
+    .cards .green {
+        background-color: #18cd5e;
+    }
 
-.info .profile-pic{
-    height: 40px;
-    width: 40px;
-    padding: 0;
-    background: none;
-}
+    .cards .card {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+        height: 450px;
+        width: 300px;
+        border-radius: 10px;
+        color: white;
+        cursor: pointer;
+        transition: 400ms;
+    }
 
-.info .profile-pic img{
-    border: none;
-}
+    .cards .card p.tip {
+        font-size: 1em;
+        font-weight: 700;
+    }
 
-.post-image{
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-}
+    .cards .card p.second-text {
+        font-size: .7em;
+    }
 
-.post-content{
-    width: 100%;
-    padding: 20px;
-}
+    .cards .card:hover {
+        transform: scale(1.2, 1.2);
+    }
 
-.likes{
-    font-weight: bold;
-}
+    .card .red:hover>.card:not(:hover) {
+        filter: blur(10px);
+        transform: scale(0.9, 0.9);
+    }
 
-.description{
-    margin: 10px 0;
-    font-size: 14px;
-    line-height: 20px;
-}
+    .card .blue:hover>.card:not(:hover) {
+        filter: blur(10px);
+        transform: scale(0.9, 0.9);
+    }
 
-.description span{
-    font-weight: bold;
-    margin-right: 10px;
-}
-
-.post-time{
-    color: rgba(0, 0, 0, 0.5);
-    font-size: 12px;
-}
-
-.comment-wrapper{
-    width: 100%;
-    height: 50px;
-    border-radius: 1px solid #dfdfdf;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.comment-wrapper .icon{
-    height: 30px;
-}
-
-.comment-box{
-    width: 80%;
-    height: 100%;
-    border: none;
-    outline: none;
-    font-size: 14px;
-}
-
-.comment-btn,
-.action-btn{
-    width: 70px;
-    height: 100%;
-    background: none;
-    border: none;
-    outline: none;
-    text-transform: capitalize;
-    font-size: 16px;
-    color: rgb(0, 162, 255);
-    opacity: 0.5;
-}
-
-.reaction-wrapper{
-    width: 100%;
-    height: 50px;
-    display: flex;
-    margin-top: -20px;
-    align-items: center;
-}
-
-.reaction-wrapper .icon{
-    height: 25px;
-    margin: 0;
-    margin-right: 20px;
-}
-
-.reaction-wrapper .icon.save{
-    margin-left: auto;
-}
+    .card .green:hover>.card:not(:hover) {
+        filter: blur(10px);
+        transform: scale(0.9, 0.9);
+    }
 </style>
 
 <body>
@@ -378,28 +324,27 @@
                     </div>
                 </div>
                 <div class="navbutton">
-                    <a href="dashboard.php"><button>Home</button></a>
-                    <a href="carikerja.php"><button>Cari Kerja</button></a> 
+                    <a href="index.php"><button>Home</button></a>
+                    <a href="internship.php"><button>Cari Kerja</button></a>
                     <a href="tipsandtrick.php"><button>Tips & Tricks</button></a>
                     <a href="tentangkami.php"><button>Tentang Kami</button></a>
                 </div>
-                <a href="login.php">
+                <a href="admin.php">
                     <div class="navbox">
                         <span>
                             <p>Login</p>
                         </span>
                     </div>
                 </a>
-
             </div>
         </nav>
         <section>
             <div class="firstbox">
                 <span>
-                    <p>Selamat Mencari Kerja,</p>
+                    <p>Ayo Kita Cari Tau,</p>
                     <div class="head2">
                         <img src="Asset/sparkle.png" class="sparkle">
-                        <p> Insighters!</p>
+                        <p> Apa Itu Insight? </p>
                         <img src="Asset/sparkle.png" class="sparkle">
                     </div>
                     <div class="teamcontainer">
@@ -414,77 +359,35 @@
             </span>
     </div>
     <div class="secondbox">
-        <span>
-            <p>Lowongan Kerja Untuk Insighters</p>
-        </span>
-        <section class="main">
-        <div class="wrapper">
-            <div class="left-col">
-                <!-- // status wrappers -->
-
-                <div class="post">
-                    <div class="info">
-                        <div class="user">
-                            <div class="profile-pic"><img height="42px" src="https://medibase-software.nl/wp-content/uploads/2020/06/MedibaseSoftware_Team-Egee.png" alt=""></div>
-                            <p class="username">minSight</p>
-                        </div>
-                        <img src="img/option.PNG" class="options" alt="">
-                    </div>
-                    <img src="https://assets.pikiran-rakyat.com/crop/0x0:0x0/x/photo/2021/11/18/3231440784.jpg" class="post-image" alt="">
-                    <div class="post-content">
-                        <div class="reaction-wrapper">
-                            <img src="img/like.PNG" class="icon" alt="">
-                            <img src="img/comment.PNG" class="icon" alt="">
-                            <img src="img/send.PNG" class="icon" alt="">
-                            <img src="img/save.PNG" class="save icon" alt="">
-                        </div>
-                        <p class="likes" style="font-size: 40px;">Lowongan Kerja Bank Indonesia</p>
-                        <p class="description"><span>Description </span> Lorem ipsum dolor sit amet consectetur,
-                            adipisicing elit. Pariatur tenetur veritatis placeat, molestiae impedit aut provident eum
-                            quo natus molestias?</p>
-                        <p class="post-time">2 minutes ago</p>
-                    </div>
-                    <div class="comment-wrapper">
-                        <img src="img/smile.PNG" class="icon" alt="">
-                        <input type="text" class="comment-box" placeholder="Add a comment">
-                        <button class="comment-btn">post</button>
-                    </div>
+        <a href="" data-toggle="modal" data-target="#exampleModalCenter">
+            <div class="cardtips">
+                <iframe width="260" height="auto" src="https://www.youtube.com/embed/5UFhwdpbhGk?si=c1zfxHkytf8vWLFB" frameborder="0" allowfullscreen></iframe>
+                <div>
+                    <p style="font-size: 24px; font-weight: 500;">
+                        Description
+                    </p>
+                    lorem ipsum dolor sit amet
                 </div>
-                <div class="post">
-                    <div class="info">
-                        <div class="user">
-                            <div class="profile-pic"><img height="42px" src="https://medibase-software.nl/wp-content/uploads/2020/06/MedibaseSoftware_Team-Egee.png" alt=""></div>
-                            <p class="username">minSight</p>
-                        </div>
-                        <img src="img/option.PNG" class="options" alt="">
-                    </div>
-                    <img src="https://smkn4pekanbaru.sch.id/wp-content/uploads/2022/03/PETAMINA-JOB-FAIR-1-jpeg-1024x576.webp" class="post-image" alt="">
-                    <div class="post-content">
-                        <div class="reaction-wrapper">
-                            <img src="img/like.PNG" class="icon" alt="">
-                            <img src="img/comment.PNG" class="icon" alt="">
-                            <img src="img/send.PNG" class="icon" alt="">
-                            <img src="img/save.PNG" class="save icon" alt="">
-                        </div>
-                        <p class="likes" style="font-size: 40px;">Lowongan Kerja Bank Pertama</p>
-                        <p class="description"><span>Description </span> Lorem ipsum dolor sit amet consectetur,
-                            adipisicing elit. Pariatur tenetur veritatis placeat, molestiae impedit aut provident eum
-                            quo natus molestias?</p>
-                        <p class="post-time">2 minutes ago</p>
-                    </div>
-                    <div class="comment-wrapper">
-                        <img src="img/smile.PNG" class="icon" alt="">
-                        <input type="text" class="comment-box" placeholder="Add a comment">
-                        <button class="comment-btn">post</button>
-                    </div>
-                </div>
-                <!-- // +5 more post elements -->
+            </div>
+        </a>
+    </div>
+    <!-- <div style="display:flex; flex-direction: column; justify-content: center; align-items: center;">
+        <div class="cards">
+            <div class="card red">
+                <p class="tip">Hover Me</p>
+                <p class="second-text">Lorem Ipsum</p>
+            </div>
+            <div class="card blue">
+                <p class="tip">Hover Me</p>
+                <p class="second-text">Lorem Ipsum</p>
+            </div>
+            <div class="card green">
+                <p class="tip">Hover Me</p>
+                <p class="second-text">Lorem Ipsum</p>
             </div>
         </div>
-        </section>
-    </div>
-    </section>
-    </div>
+    </div> -->
+
 </body>
 
 </html>

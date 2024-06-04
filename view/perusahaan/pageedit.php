@@ -1,0 +1,364 @@
+<?php
+session_start();
+if ($_SESSION['role'] != 'perusahaan') {
+    header("Location: ../public/index.php");
+    exit();
+}
+?>
+<?php
+include '../../config/db.php';
+
+// Mengecek koneksi
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Mendapatkan id_informasi dari URL
+$id_berita = isset($_GET['id']) ? intval($_GET['id']) : 0;
+
+// Query untuk mengambil data berita berdasarkan id_informasi
+$sql = "SELECT b.id_berita, b.judul_berita, b.gambar_berita, b.tanggal_awal, b.tanggal_akhir, b.nama_internship, b.deskripsi_berita, b.id_kategori, b.id_perusahaan, k.kategori, p.nama_perusahaan 
+        FROM berita b 
+        JOIN kategori k ON b.id_kategori = k.id_kategori
+        JOIN akun_perusahaan p ON b.id_perusahaan = p.id_perusahaan
+        WHERE b.id_berita = ?";
+
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("i", $id_berita);
+$stmt->execute();
+$result = $stmt->get_result();
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InternSight</title>
+
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+    <!-- tailwind -->
+
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        margin-left: 20px;
+        margin-right: 20px;
+        background-color: #F6F8FD;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    .container {
+        margin-top: 20px
+    }
+
+    /* navbar */
+    nav {
+        display: flex;
+        justify-content: center;
+        position: sticky;
+        z-index: 999;
+        top: 0px;
+    }
+
+    .navbar {
+        display: flex;
+        align-items: center;
+        background-color: black;
+        border-radius: 30px;
+        width: 100%;
+        height: 80px;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+        justify-content: space-between;
+        transition: border-radius 0.3s ease-in-out;
+    }
+
+    .logo {
+        margin-left: 30px;
+        display: flex;
+        align-items: center;
+        height: 100%;
+    }
+
+    .logoimg {
+        width: 50px;
+        height: auto;
+        margin-right: 20px;
+    }
+
+    .logo p1 {
+        color: #fff;
+        font-family: 'poppins', sans-serif;
+        font-size: 24px;
+        font-weight: 600;
+    }
+
+    .logo p2 {
+        color: #ffffff;
+        font-family: 'poppins', sans-serif;
+        font-size: 15px;
+        font-weight: 300;
+        display: flex;
+        margin-top: -10px;
+    }
+
+    .navbox {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 80px;
+        background-color: #2a83fd;
+        width: 140px;
+        height: 45px;
+        border-radius: 8px;
+    }
+
+    .navbox:hover {
+        transition: background-color 0.3s ease-in-out;
+        background-color: #fd2a6d;
+    }
+
+    .navbox span p {
+        color: #fff;
+        font-family: 'poppins', sans-serif;
+        font-size: 16px;
+        font-weight: 500;
+    }
+
+    .navbutton {
+        width: 1000px;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .navbutton button {
+        width: auto;
+        height: 45px;
+        border-radius: 4px;
+        color: #fff;
+        font-family: 'poppins', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        margin: 30px;
+        padding-left: 20px;
+        padding-right: 20px;
+        background-color: transparent;
+        border: none;
+        outline: none;
+        cursor: pointer;
+    }
+
+    .navbar button:hover {
+        transition: background-color 0.3s ease-in-out;
+        background-color: #2a83fd;
+    }
+
+    /* main */
+    /* first box */
+    .firstbox {
+        display: flex;
+        justify-content: center;
+        width: auto;
+        height: auto;
+        border-radius: 30px 30px 0 0;
+        padding-top: 50px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        object-fit: cover;
+        margin-top: 60px;
+        background-color: white;
+        box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+    }
+
+    .content-berita {
+        width: 800px;
+        margin-right: 80px;
+        height: 800px;
+    }
+
+    .firstbox h1 {
+        text-align: start;
+        color: #000;
+        font-family: 'poppins', sans-serif;
+        font-size: 34px;
+        font-weight: 700;
+    }
+
+    .firstbox p {
+        text-align: justify;
+        font-family: 'poppins', sans-serif;
+        font-size: 16px;
+        font-weight: 400;
+    }
+
+    .firstbox img {
+        width: 500px;
+        height: 300px;
+        border-radius: 30px;
+        margin-top: 15px;
+    }
+
+    /* second box */
+    .secondbox {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 2200px;
+    }
+
+    .secondbox span p {
+        text-align: center;
+        width: 800px;
+        color: #000;
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 40px;
+        font-weight: 600;
+        line-height: 90px;
+        letter-spacing: -4px;
+    }
+</style>
+<style>
+    .action-button {
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+        /* margin-bottom: 20px; */
+    }
+
+    .edit button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 4px;
+        background-color: black;
+        border: none;
+        color: #FFFFFF;
+        text-align: center;
+        font-size: 17px;
+        padding: 16px;
+        width: 120px;
+        height: 40px;
+        transition: all 0.5s;
+        cursor: pointer;
+        margin: 5px;
+    }
+    .delete button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 4px;
+        background-color: #FF3636;
+        border: none;
+        color: #FFFFFF;
+        text-align: center;
+        font-size: 17px;
+        padding: 16px;
+        width: 120px;
+        height: 40px;
+        transition: all 0.5s;
+        cursor: pointer;
+        margin: 5px;
+    }
+
+    button span {
+        cursor: pointer;
+        display: inline-block;
+        position: relative;
+        transition: 0.5s;
+    }
+
+    button span:after {
+        content: '»';
+        position: absolute;
+        opacity: 0;
+        top: 0;
+        right: -15px;
+        transition: 0.5s;
+    }
+
+    button:hover span {
+        padding-right: 15px;
+    }
+
+    button:hover span:after {
+        opacity: 1;
+        right: 0;
+    }
+</style>
+
+<body>
+    <?php if ($result->num_rows > 0) {
+        // Output data dari baris
+        $row = $result->fetch_assoc(); ?>
+        <div class="container">
+            <nav>
+                <div class="navbar">
+                    <div class="logo">
+                        <div>
+                            <img src="Asset/logo.png" class="logoimg">
+                        </div>
+                        <div>
+                            <p1>InternSight</p1>
+                            <!-- <p2>INFORMATION</p2> -->
+                        </div>
+                    </div>
+                    <a href="/internsight/public/logout.php">
+                        <div class="navbox">
+                            <span>
+                                <p>Logout</p>
+                            </span>
+                        </div>
+                    </a>
+                </div>
+            </nav>
+            <section>
+                <div class="firstbox">
+
+                    <div class="content-berita">
+                        <h1 style="color:#000"><?php echo $row["judul_berita"]; ?> - <?php echo $row["nama_internship"]; ?></h1>
+                        <p style="color:#000"><?php echo $row["deskripsi_berita"]; ?></p>
+                    </div>
+                    <div>
+                        <img src="../../assets/storage/<?php echo $row["gambar_berita"]; ?>" alt="">
+                        <div class="action-button">
+                            <div class="delete">
+                                <button>
+                                    <span>Delete</span>
+                                </button>
+                            </div>
+                            <div class="edit">
+                                <button>
+                                    <span>Edit</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="secondbox">
+
+                </div> -->
+            </section>
+        <?php } else {
+        echo "No details found for this information.";
+    } ?>
+</body>
+
+</html>

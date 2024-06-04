@@ -1,3 +1,10 @@
+<?php
+session_start();
+if ($_SESSION['role'] != 'admin') {
+    header("Location: ../public/index.php");
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -379,11 +386,12 @@
                 </div>
                 <div class="navbutton">
                     <a href="/internsight/view/admin/dashboard.php"><button>Home</button></a>
-                    <a href="/internsight/view/admin/carikerja.php"><button>Cari Kerja</button></a> 
+                    <a href="/internsight/view/admin/internshippp.php"><button>Cari Kerja</button></a> 
                     <a href="/internsight/view/admin/tipsandtrick.php"><button>Tips & Tricks</button></a>
                     <a href="/internsight/view/admin/tentangkami.php"><button>Tentang Kami</button></a>
+                    <a href="/internsight/view/admin/admin.php"><button>Admin</button></a>
                 </div>
-                <a href="admin.php">
+                <a href="login.php">
                     <div class="navbox">
                         <span>
                             <p>Logout</p>

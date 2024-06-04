@@ -150,7 +150,7 @@
         height: 750px;
         border-radius: 30px;
         background-color: black;
-        background-image: url("Asset/gauze.jpeg");
+        background-image: url("/internsight/assets/gauze.jpeg");
         background-repeat: no-repeat;
         background-size: cover;
         object-fit: cover;
@@ -316,7 +316,7 @@
             <div class="navbar">
                 <div class="logo">
                     <div>
-                        <img src="Asset/logo.png" class="logoimg">
+                        <img src="/internsight/assets/logo.png" class="logoimg">
                     </div>
                     <div>
                         <p1>InternSight</p1>
@@ -325,7 +325,7 @@
                 </div>
                 <div class="navbutton">
                     <a href="dashboard.php"><button>Home</button></a>
-                    <a href="carikerja.php"><button>Cari Kerja</button></a>
+                    <a href="internship.php"><button>Cari Kerja</button></a>
                     <a href="tipsandtrick.php"><button>Tips & Tricks</button></a>
                     <a href="tentangkami.php"><button>Tentang Kami</button></a>
                 </div>
@@ -343,9 +343,9 @@
                 <span>
                     <p>Ayo Kita Cari Tau,</p>
                     <div class="head2">
-                        <img src="Asset/sparkle.png" class="sparkle">
-                        <p> Apa Itu Insight? </p>
-                        <img src="Asset/sparkle.png" class="sparkle">
+                        <img src="/internsight/assets/sparkle.png" class="sparkle">
+                        <p> Apa Itu InternSight? </p>
+                        <img src="/internsight/assets/sparkle.png" class="sparkle">
                     </div>
                     <div class="teamcontainer">
                         <!-- <div class="card1">

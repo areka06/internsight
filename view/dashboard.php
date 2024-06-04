@@ -1,10 +1,3 @@
-<?php
-session_start();
-if (!isset($_SESSION['user_id']) || $_SESSION['role_id'] != 1) {
-    header('Location: /');
-    exit();
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -153,7 +146,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role_id'] != 1) {
         height: 750px;
         border-radius: 30px;
         background-color: black;
-        background-image: url("../Asset/gauze.jpeg");
+        background-image: url("/internsight/assets/gauze.jpeg");
         background-repeat: no-repeat;
         background-size: cover;
         object-fit: cover;
@@ -514,7 +507,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role_id'] != 1) {
             <div class="navbar">
                 <div class="logo">
                     <div>
-                        <img src="../Asset/logo.png" class="logoimg">
+                        <img src="/internsight/assets/logo.png" class="logoimg">
                     </div>
                     <div>
                         <p1>InternSight</p1>
@@ -523,7 +516,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role_id'] != 1) {
                 </div>
                 <div class="navbutton">
                     <a href="dashboard.php"><button>Home</button></a>
-                    <a href="carikerja.php"><button>Cari Kerja</button></a> 
+                    <a href="internship.php"><button>Cari Kerja</button></a> 
                     <a href="tipsandtrick.php"><button>Tips & Tricks</button></a>
                     <a href="tentangkami.php"><button>Tentang Kami</button></a>
                 </div>
@@ -541,9 +534,9 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role_id'] != 1) {
                 <span>
                     <p>Saatnya Cari Pekerjaan</p>
                     <div class="head2">
-                        <img src="../Asset/sparkle.png" class="sparkle">
+                        <img src="/internsight/assets/sparkle.png" class="sparkle">
                         <p> Dengan Mudah, Disini! </p>
-                        <img src="../Asset/sparkle.png" class="sparkle">
+                        <img src="/internsight/assets/sparkle.png" class="sparkle">
                     </div>
                     <div class="teamcontainer">
                         <!-- <div class="card1">
@@ -563,7 +556,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role_id'] != 1) {
                 </span>
                 <div class="flex-container">
                     <div class="card-container">
-                        <a href="carikerja.php"><div class="card">
+                        <a href="internship.php"><div class="card">
                             <div class="content">
                                 <p class="heading">Saya Mencari Pekerjaan</p>
                                 <p class="para">
@@ -612,29 +605,29 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role_id'] != 1) {
                 <div class="benefit-list">
                     <div class="container-list">
                         <div class="list1">
-                            <img src="../Asset/sparkle2.png" alt="" class="sparkle2">
+                            <img src="/internsight/assets/sparkle2.png" alt="" class="sparkle2">
                             <p>Akses Mudah</p>
                         </div>
                         <div class="list1">
-                            <img src="../Asset/sparkle2.png" alt="" class="sparkle2">
+                            <img src="/internsight/assets/sparkle2.png" alt="" class="sparkle2">
                             <p>Informasi Terkini</p>
                         </div>
                         <div class="list1">
-                            <img src="../Asset/sparkle2.png" alt="" class="sparkle2">
+                            <img src="/internsight/assets/sparkle2.png" alt="" class="sparkle2">
                             <p>Pilihan yang Beragam</p>
                         </div>
                     </div>
                     <div class="container-list">
                         <div class="list1">
-                            <img src="../Asset/sparkle2.png" alt="" class="sparkle2">
+                            <img src="/internsight/assets/sparkle2.png" alt="" class="sparkle2">
                             <p>Penghematan Waktu dan Biaya</p>
                         </div>
                         <div class="list1">
-                            <img src="../Asset/sparkle2.png" alt="" class="sparkle2">
+                            <img src="/internsight/assets/sparkle2.png" alt="" class="sparkle2">
                             <p>Kredibilitas Pekerjaan</p>
                         </div>
                         <div class="list1">
-                            <img src="../Asset/sparkle2.png" alt="" class="sparkle2">
+                            <img src="/internsight/assets/sparkle2.png" alt="" class="sparkle2">
                             <p>Informasi yang Lebih Lengkap</p>
                         </div>
                     </div>
@@ -643,7 +636,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role_id'] != 1) {
             <div class="fifthbox">
                 <p>Beberapa bisnis/perusahaan yang menyediakan lowongan dengan kami</p>
                 <div class="logo-perusahaan">
-                    <img src="Asset/Matahari.png" alt="logo" style="width: auto; height: 150px;">
+                    <img src="/internsight/assets/Matahari.png" alt="logo" style="width: auto; height: 150px;">
                     <img src="https://download.logo.wine/logo/Pertamina/Pertamina-Logo.wine.png" alt="logo" style="width: 250px; margin-right: 50px;">
                     <img src="https://maxsi.id/web/wp-content/uploads/2021/07/logo-telkomsel-baru.png" alt="logo" style="width: auto; height: 110px; margin-right: 70px">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Logo_PT_Kereta_Api_Indonesia_%28Persero%29.png/1280px-Logo_PT_Kereta_Api_Indonesia_%28Persero%29.png" alt="logo" style="width: auto; height: 80px; margin-right: 70px">

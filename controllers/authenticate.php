@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 require_once '../config/db.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -7,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $password = $_POST['password'];
 
     // Check in admin table
-    $stmt = $pdo->prepare('SELECT * FROM akun_admin WHERE username = ? AND password = ?');
+    $stmt = $conn->prepare('SELECT * FROM akun_admin WHERE username = ? AND password = ?');
     $stmt->execute([$username, $password]);
     $admin = $stmt->fetch();
     
@@ -19,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     // Check in pelamar table
-    $stmt = $pdo->prepare('SELECT * FROM akun_pelamar WHERE username = ? AND password = ?');
+    $stmt = $conn->prepare('SELECT * FROM akun_pelamar WHERE username = ? AND password = ?');
     $stmt->execute([$username, $password]);
     $pelamar = $stmt->fetch();
     
@@ -31,13 +32,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     // Check in perusahaan table
-    $stmt = $pdo->prepare('SELECT * FROM akun_perusahaan WHERE username = ? AND password = ?');
+    $stmt = $conn->prepare('SELECT * FROM akun_perusahaan WHERE username = ? AND password = ?');
     $stmt->execute([$username, $password]);
     $perusahaan = $stmt->fetch();
     
     if ($perusahaan) {
         $_SESSION['user'] = $perusahaan;
         $_SESSION['role'] = 'perusahaan';
+        $_SESSION['id_perusahaan'] = $perusahaan['id_perusahaan']; // Simpan id_perusahaan ke dalam session
+        $_SESSION['nama_perusahaan'] = $perusahaan['nama_perusahaan'];
         header('Location: ../view/perusahaan/dashboard.php');
         exit();
     }

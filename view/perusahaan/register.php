@@ -202,7 +202,7 @@
     <main>
         <section class="image">
             <img class="main-profil" src="https://asaprentals.com.au/wp-content/uploads/2020/10/team.png" alt="">
-            <img class="main-bg" src="/internsight/Asset/gauze.jpeg" alt="Image">
+            <img class="main-bg" src="/internsight/assets/gauze.jpeg" alt="Image">
         </section>
         <section class="login">
             <h1>Register</h1>

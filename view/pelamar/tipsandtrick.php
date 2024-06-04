@@ -1,3 +1,14 @@
+<?php
+session_start();
+if ($_SESSION['role'] !== 'pelamar') {
+    $_SESSION['error'] = 'You must be logged in as "applicant" to access this page.';
+    header('Location: /internsight/view/login.php');
+    exit();
+}
+?>
+<?php
+include '../../controllers/tipsandtrick.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,7 +23,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
     <!-- tailwind -->
     <!-- bootstrap -->
-   
+
 
 </head>
 <style>
@@ -32,7 +43,7 @@
     }
 
     .container {
-        margin-top: 20px
+        margin-top: 20px;
     }
 
     /* navbar */
@@ -150,7 +161,7 @@
         height: 750px;
         border-radius: 30px;
         background-color: black;
-        background-image: url("Asset/gauze.jpeg");
+        background-image: url("/internsight/assets/gauze.jpeg");
         background-repeat: no-repeat;
         background-size: cover;
         object-fit: cover;
@@ -197,7 +208,6 @@
     }
 
     .card1 {
-
         margin-right: 100px;
         background-color: #fff;
         border-radius: 20px;
@@ -216,32 +226,44 @@
     /* second box */
     .secondbox {
         display: flex;
-        flex-direction: row;
-        gap: 100px;
+        flex-direction: column;
         justify-content: center;
-        align-items: center;
         width: 100%;
-        height: 800px;
+        height: auto;
     }
 
     .secondbox span p {
         text-align: center;
-        width: 800px;
         color: #000;
         font-family: "Space Grotesk", sans-serif;
         font-size: 40px;
         font-weight: 600;
         line-height: 90px;
         letter-spacing: -4px;
+        margin-bottom: 35px;
+    }
+
+    iframe {
+        pointer-events: none;
+        border-radius: 10px;
     }
 
     .cardtips {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
         font-family: 'poppins', sans-serif;
         background-color: #fff;
-        padding: 20px;
+        padding: 10px;
+        width: 380px;
         height: 450px;
-        border-radius: 20px;
+        border-radius: 10px;
         box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+        margin-bottom: 50px;
+        margin-right: 56px;
+        margin-left: 56px;
+
     }
 
     .cards {
@@ -250,64 +272,42 @@
         font-family: 'poppins', sans-serif;
         background-color: #fff;
         padding: 20px;
-        height: 450px;
         border-radius: 20px;
         gap: 100px;
     }
 
-    .cards .red {
-        background-color: #007e9e;
+    .cards-content {
+        width: 330px;
     }
 
-    .cards .blue {
-        background-color: #0062ff;
+    .cards-content h2 {
+        color: #000;
+        font-weight: 600;
+        font-size: 20px;
     }
 
-    .cards .green {
-        background-color: #18cd5e;
+    .cards-content p {
+        font-size: 14px;
+        text-align: justify;
+        color: #000;
+        display: -webkit-box;
+        -webkit-line-clamp: 7;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
-    .cards .card {
+    .cards-container {
         display: flex;
-        align-items: center;
-        justify-content: center;
+        justify-content:flex-start;
+        flex-wrap: wrap;
+    }
+    /* section{
+        display: flex;
         flex-direction: column;
-        text-align: center;
-        height: 450px;
-        width: 300px;
-        border-radius: 10px;
-        color: white;
-        cursor: pointer;
-        transition: 400ms;
-    }
-
-    .cards .card p.tip {
-        font-size: 1em;
-        font-weight: 700;
-    }
-
-    .cards .card p.second-text {
-        font-size: .7em;
-    }
-
-    .cards .card:hover {
-        transform: scale(1.2, 1.2);
-    }
-
-    .card .red:hover>.card:not(:hover) {
-        filter: blur(10px);
-        transform: scale(0.9, 0.9);
-    }
-
-    .card .blue:hover>.card:not(:hover) {
-        filter: blur(10px);
-        transform: scale(0.9, 0.9);
-    }
-
-    .card .green:hover>.card:not(:hover) {
-        filter: blur(10px);
-        transform: scale(0.9, 0.9);
-    }
+        justify-content: center;
+        align-items: center;
+    } */
 </style>
 
 <body>
@@ -316,7 +316,7 @@
             <div class="navbar">
                 <div class="logo">
                     <div>
-                        <img src="Asset/logo.png" class="logoimg">
+                        <img src="/internsight/assets/logo.png" class="logoimg">
                     </div>
                     <div>
                         <p1>InternSight</p1>
@@ -324,12 +324,12 @@
                     </div>
                 </div>
                 <div class="navbutton">
-                    <a href="/internsight/view/admin/dashboard.php"><button>Home</button></a>
-                    <a href="/internsight/view/admin/carikerja.php"><button>Cari Kerja</button></a>
-                    <a href="/internsight/view/admin/tipsandtrick.php"><button>Tips & Tricks</button></a>
-                    <a href="/internsight/view/admin/tentangkami.php"><button>Tentang Kami</button></a>
+                    <a href="/internsight/view/pelamar/dashboard.php"><button>Home</button></a>
+                    <a href="/internsight/view/pelamar/internship.php"><button>Cari Kerja</button></a>
+                    <a href="/internsight/view/pelamar/tipsandtrick.php"><button>Tips & Tricks</button></a>
+                    <a href="/internsight/view/pelamar/tentangkami.php"><button>Tentang Kami</button></a>
                 </div>
-                <a href="admin.php">
+                <a href="/internsight/public/logout.php">
                     <div class="navbox">
                         <span>
                             <p>Logout</p>
@@ -341,11 +341,11 @@
         <section>
             <div class="firstbox">
                 <span>
-                    <p>Ayo Kita Cari Tau,</p>
+                    <p>Tips dan Trick,</p>
                     <div class="head2">
-                        <img src="Asset/sparkle.png" class="sparkle">
-                        <p> Apa Itu Insight? </p>
-                        <img src="Asset/sparkle.png" class="sparkle">
+                        <img src="/internsight/assets/sparkle.png" class="sparkle">
+                        <p> Untuk Insighters </p>
+                        <img src="/internsight/assets/sparkle.png" class="sparkle">
                     </div>
                     <div class="teamcontainer">
                         <!-- <div class="card1">
@@ -357,36 +357,38 @@
                     </div>
             </div>
             </span>
-    </div>
-    <div class="secondbox">
-        <a href="" data-toggle="modal" data-target="#exampleModalCenter">
-            <div class="cardtips">
-                <iframe width="260" height="auto" src="https://www.youtube.com/embed/5UFhwdpbhGk?si=c1zfxHkytf8vWLFB" frameborder="0" allowfullscreen></iframe>
-                <div>
-                    <p style="font-size: 24px; font-weight: 500;">
-                        Description
-                    </p>
-                    lorem ipsum dolor sit amet
+            <div class="secondbox">
+                <span>
+                    <p>Tips dan Trick Untuk Insighters</p>
+                </span>
+                <div class="cards-container">
+                    <?php
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_assoc()) {
+                    ?>
+                            <div class="cardtips">
+                                <a href="/internsight/view/pelamar/pagetipsandtrick.php?id=<?php echo $row["id_informasi"]; ?>">
+                                    <iframe width="330" height="200px" src="<?php echo $row["video"]; ?>" frameborder="0" allowfullscreen></iframe>
+                                    <div class="cards-content">
+                                        <h2>
+                                            <?php echo $row["judul_informasi"]; ?>
+                                        </h2>
+                                        <p>
+                                            <?php echo $row["deskripsi_informasi"]; ?>
+                                        </p>
+                                    </div>
+                                </a>
+                            </div>
+                    <?php
+                        }
+                    } else {
+                        echo "<p>Tidak ada berita tersedia.</p>";
+                    }
+                    ?>
                 </div>
             </div>
-        </a>
+
     </div>
-    <!-- <div style="display:flex; flex-direction: column; justify-content: center; align-items: center;">
-        <div class="cards">
-            <div class="card red">
-                <p class="tip">Hover Me</p>
-                <p class="second-text">Lorem Ipsum</p>
-            </div>
-            <div class="card blue">
-                <p class="tip">Hover Me</p>
-                <p class="second-text">Lorem Ipsum</p>
-            </div>
-            <div class="card green">
-                <p class="tip">Hover Me</p>
-                <p class="second-text">Lorem Ipsum</p>
-            </div>
-        </div>
-    </div> -->
 
 </body>
 
