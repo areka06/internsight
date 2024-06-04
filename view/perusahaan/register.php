@@ -202,14 +202,14 @@
     <main>
         <section class="image">
             <img class="main-profil" src="https://asaprentals.com.au/wp-content/uploads/2020/10/team.png" alt="">
-            <img class="main-bg" src="/internsight/assets/gauze.jpeg" alt="Image">
+            <img class="main-bg" src="/../assets/gauze.jpeg" alt="Image">
         </section>
         <section class="login">
             <h1>Register</h1>
             <?php if (isset($_SESSION['error'])): ?>
                 <p style="color: red;"><?php echo htmlspecialchars($_SESSION['error']); unset($_SESSION['error']); ?></p>
             <?php endif; ?>
-            <form class="form" action="/internsight/controllers/registerperusahaan.php" method="post">
+            <form class="form" action="/../controllers/registerperusahaan.php" method="post">
                 <div class="flex-column">
                     <label>Company Name</label>
                 </div>

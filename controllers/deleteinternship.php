@@ -16,14 +16,14 @@
         $stmt->bind_param("i", $id_berita);
 
         if ($stmt->execute()) {
-            echo "<script>alert('Data berhasil dihapus.'); window.location.href='/internsight/view/perusahaan/internship.php';</script>";
+            echo "<script>alert('Data berhasil dihapus.'); window.location.href='../view/perusahaan/internship.php';</script>";
         } else {
-            echo "<script>alert('Error: " . $stmt->error . "'); window.location.href='/internsight/view/perusahaan/internship.php';</script>";
+            echo "<script>alert('Error: " . $stmt->error . "'); window.location.href='../view/perusahaan/internship.php';</script>";
         }
 
         $stmt->close();
     } else {
-        echo "<script>alert('ID berita tidak valid.'); window.location.href='/internsight/view/perusahaan/internship.php';</script>";
+        echo "<script>alert('ID berita tidak valid.'); window.location.href='../view/perusahaan/internship.php';</script>";
     }
 
     $conn->close();

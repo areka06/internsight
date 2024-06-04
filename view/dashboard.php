@@ -146,7 +146,7 @@
         height: 750px;
         border-radius: 30px;
         background-color: black;
-        background-image: url("/internsight/assets/gauze.jpeg");
+        background-image: url("../assets/gauze.jpeg");
         background-repeat: no-repeat;
         background-size: cover;
         object-fit: cover;
@@ -534,9 +534,9 @@
                 <span>
                     <p>Saatnya Cari Pekerjaan</p>
                     <div class="head2">
-                        <img src="/internsight/assets/sparkle.png" class="sparkle">
+                        <img src="../assets/sparkle.png" class="sparkle">
                         <p> Dengan Mudah, Disini! </p>
-                        <img src="/internsight/assets/sparkle.png" class="sparkle">
+                        <img src="../assets/sparkle.png" class="sparkle">
                     </div>
                     <div class="teamcontainer">
                         <!-- <div class="card1">

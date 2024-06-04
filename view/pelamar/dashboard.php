@@ -515,7 +515,7 @@ if ($_SESSION['role'] !== 'pelamar') {
             <div class="navbar">
                 <div class="logo">
                     <div>
-                        <img src="../../../internsight/assets/logo.png" class="logoimg">
+                        <img src="../../assets/logo.png" class="logoimg">
                     </div>
                     <div>
                         <p1>InternSight</p1>
@@ -542,9 +542,9 @@ if ($_SESSION['role'] !== 'pelamar') {
                 <span>
                     <p>Saatnya Cari Pekerjaan</p>
                     <div class="head2">
-                        <img src="../../../internsight/assets/sparkle.png" class="sparkle">
+                        <img src="../../assets/sparkle.png" class="sparkle">
                         <p> Dengan Mudah, Disini! </p>
-                        <img src="../../../internsight/assets/sparkle.png" class="sparkle">
+                        <img src="../../assets/sparkle.png" class="sparkle">
                     </div>
                     <div class="teamcontainer">
                         <!-- <div class="card1">

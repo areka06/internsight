@@ -32,9 +32,11 @@ if ($_SESSION['role'] !== 'pelamar') {
         margin-left: 20px;
         margin-right: 20px;
     }
-    a{
+
+    a {
         text-decoration: none;
     }
+
     .container {
         margin-top: 20px
     }
@@ -224,10 +226,10 @@ if ($_SESSION['role'] !== 'pelamar') {
         justify-content: center;
         align-items: center;
         width: 100%;
-        height: 2200px;
+        height: auto;
     }
 
-    .secondbox span p {
+    /* .secondbox span p {
         text-align: center;
         width: 800px;
         color: #000;
@@ -236,8 +238,7 @@ if ($_SESSION['role'] !== 'pelamar') {
         font-weight: 600;
         line-height: 90px;
         letter-spacing: -4px;
-    }
-
+    } */
 </style>
 
 <body>
@@ -246,7 +247,7 @@ if ($_SESSION['role'] !== 'pelamar') {
             <div class="navbar">
                 <div class="logo">
                     <div>
-                        <img src="Asset/logo.png" class="logoimg">
+                        <img src="/internsight/assets/logo.png" class="logoimg">
                     </div>
                     <div>
                         <p1>InternSight</p1>
@@ -255,7 +256,7 @@ if ($_SESSION['role'] !== 'pelamar') {
                 </div>
                 <div class="navbutton">
                     <a href="/internsight/view/pelamar/dashboard.php"><button>Home</button></a>
-                    <a href="/internsight/view/pelamar/internship.php"><button>Cari Kerja</button></a> 
+                    <a href="/internsight/view/pelamar/internship.php"><button>Cari Kerja</button></a>
                     <a href="/internsight/view/pelamar/tipsandtrick.php"><button>Tips & Tricks</button></a>
                     <a href="/internsight/view/pelamar/tentangkami.php"><button>Tentang Kami</button></a>
                 </div>
@@ -271,11 +272,11 @@ if ($_SESSION['role'] !== 'pelamar') {
         <section>
             <div class="firstbox">
                 <span>
-                    <p>Ayo Kita Cari Tau,</p>
+                    <p>Tips dan Trick,</p>
                     <div class="head2">
-                        <img src="Asset/sparkle.png" class="sparkle">
-                        <p> Apa Itu Insight? </p>
-                        <img src="Asset/sparkle.png" class="sparkle">
+                        <img src="/internsight/assets/sparkle.png" class="sparkle">
+                        <p> Untuk Insighters </p>
+                        <img src="/internsight/assets/sparkle.png" class="sparkle">
                     </div>
                     <div class="teamcontainer">
                         <!-- <div class="card1">
@@ -285,12 +286,20 @@ if ($_SESSION['role'] !== 'pelamar') {
                         <!-- <div class="card2">
                             <button>Cari Kerja</button> -->
                     </div>
+                </span>
             </div>
-            </span>
+
+            <div class="secondbox">
+                <span>
+                    <p>Tips dan Trick Untuk Insighters</p>
+                </span>
+                <div style="height: 1000px;">
+
+                </div>
+            </div>
+
     </div>
-    <div class="secondbox">
-       
-    </div>
+
 </body>
 
 </html>

@@ -1,6 +1,6 @@
 <?php
 session_start();
-if ($_SESSION['role'] != 'perusahaan') {
+if ($_SESSION['role'] != 'admin') {
     header("Location: ../public/index.php");
     exit();
 }
@@ -235,9 +235,10 @@ if ($_SESSION['role'] != 'perusahaan') {
                     </div>
                 </div>
                 <div class="navbutton">
-                    <a href="/internsight/view/perusahaan/dashboard.php"><button>Home</button></a>
-                    <a href="/internsight/view/perusahaan/internship.php"><button>Daftar Internship</button></a> 
-                    <a href="/internsight/view/perusahaan/pageinternship.php"><button>Page Edit</button></a> 
+                    <a href="/internsight/view/admin/dashboard.php"><button>Home</button></a>
+                    <a href="/internsight/view/admin/internship.php"><button>Daftar Internship</button></a> 
+                    <a href="/internsight/view/admin/pageinternship.php"><button>Daftar Pelamar</button></a> 
+                    <a href="/internsight/view/admin/pageinternship.php"><button>Daftar Perusahaan</button></a>
                 </div>
                 <a href="admin.php">
                     <div class="navbox">

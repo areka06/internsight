@@ -252,6 +252,8 @@ include '../../controllers/berita.php';
         border: 1px solid #dfdfdf;
         border-radius: 10px;
         margin-top: 40px;
+        margin-left: 5px;
+        margin-right: 5px;
         box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
         font-family: 'poppins', sans-serif;
     }
@@ -382,7 +384,7 @@ include '../../controllers/berita.php';
         display: flex;
         flex-wrap: wrap;
         gap: 10px;
-        justify-content: space-between;
+        justify-content: flex-start;
         width: 90%;
     }
 </style>
@@ -449,23 +451,24 @@ include '../../controllers/berita.php';
                     ?>
                             <!-- // status wrappers -->
                             <div class="post">
+                                <a href="/internsight/view/pelamar/pageinternship.php?id=<?php echo $row["id_berita"]; ?>">
 
-                                <div class="news-image">
-                                    <img src='../../assets/storage/<?php echo $row["gambar_berita"]; ?>' class="post-image" alt="">
-                                </div>
-                                <div class="post-content">
-                                    <p class="title"><?php echo $row["judul_berita"]; ?></p>
-                                    <p class="description"><?php echo $row["deskripsi_berita"]; ?></p>
-                                    <div class="info">
-                                        <div class="user">
-                                            <div class="profile-pic"><img height="42px" src="https://medibase-software.nl/wp-content/uploads/2020/06/MedibaseSoftware_Team-Egee.png" alt=""></div>
-                                            <p class="username"><?php echo $row["nama_perusahaan"]; ?></p>
-                                        </div>
-                                        <img src="img/option.PNG" class="options" alt="">
+                                    <div class="news-image">
+                                        <img src='../../assets/storage/<?php echo $row["gambar_berita"]; ?>' class="post-image" alt="">
                                     </div>
-                                    <p class="post-time"><?php echo $row["tanggal_awal"] . " hingga " . $row["tanggal_akhir"]; ?></p>
-                                </div>
-
+                                    <div class="post-content">
+                                        <p class="title"><?php echo $row["judul_berita"]; ?></p>
+                                        <p class="description"><?php echo $row["deskripsi_berita"]; ?></p>
+                                        <div class="info">
+                                            <div class="user">
+                                                <div class="profile-pic"><img height="42px" src="https://medibase-software.nl/wp-content/uploads/2020/06/MedibaseSoftware_Team-Egee.png" alt=""></div>
+                                                <p class="username"><?php echo $row["nama_perusahaan"]; ?></p>
+                                            </div>
+                                            <img src="img/option.PNG" class="options" alt="">
+                                        </div>
+                                        <p class="post-time"><?php echo $row["tanggal_awal"] . " hingga " . $row["tanggal_akhir"]; ?></p>
+                                    </div>
+                                </a>
                             </div>
                             <!-- // +5 more post elements -->
                     <?php

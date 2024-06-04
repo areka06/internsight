@@ -523,11 +523,11 @@ if ($_SESSION['role'] !== 'admin') {
                     </div>
                 </div>
                 <div class="navbutton">
-                    <a href="/internsight/view/admin/dashboard.php"><button>Home</button></a>
-                    <a href="/internsight/view/admin/internship.php"><button>Cari Kerja</button></a> 
-                    <a href="/internsight/view/admin/tipsandtrick.php"><button>Tips & Tricks</button></a>
-                    <a href="/internsight/view/admin/tentangkami.php"><button>Tentang Kami</button></a>
-                    <a href="/internsight/view/admin/admin.php"><button>Admin</button></a>
+                    <a href="../view/admin/dashboard.php"><button>Home</button></a>
+                    <a href="../view/admin/internship.php"><button>Cari Kerja</button></a> 
+                    <a href="../view/admin/tipsandtrick.php"><button>Tips & Tricks</button></a>
+                    <a href="../view/admin/tentangkami.php"><button>Tentang Kami</button></a>
+                    <a href="../view/admin/admin.php"><button>Admin</button></a>
                 </div>
                 <a href="admin.php">
                     <div class="navbox">

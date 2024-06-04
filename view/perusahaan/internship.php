@@ -382,7 +382,7 @@ include '../../controllers/berita.php';
             <div class="navbar">
                 <div class="logo">
                     <div>
-                        <img src="../Asset/logo.png" class="logoimg">
+                        <img src="../../../internsight/assets/logo.png" class="logoimg">
                     </div>
                     <div>
                         <p1>InternSight</p1>
