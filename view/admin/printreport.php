@@ -168,23 +168,26 @@ include '../../controllers/berita.php';
 
         window.addEventListener('load', () => {
             createCharts().then(() => {
-                const element = document.getElementById('reportContent');
-                const opt = {
-                    margin: 0.5,
-                    filename: 'Report_InternSight.pdf',
-                    image: { type: 'jpeg', quality: 0.98 },
-                    html2canvas: { scale: 2 },
-                    jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
-                };
+                // Add a 3-second delay before generating the PDF
+                setTimeout(() => {
+                    const element = document.getElementById('reportContent');
+                    const opt = {
+                        margin: 0.5,
+                        filename: 'Report_InternSight.pdf',
+                        image: { type: 'jpeg', quality: 0.98 },
+                        html2canvas: { scale: 2 },
+                        jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+                    };
 
-                html2pdf().from(element).set(opt).save().then(() => {
-                    // Attempt to go back to the previous page
-                    window.history.back();
-                    // Attempt to close the window/tab
-                    setTimeout(() => {
-                        window.open('', '_self').close();
-                    }, 1000); // Adjust the timeout if needed
-                });
+                    html2pdf().from(element).set(opt).save().then(() => {
+                        // Attempt to go back to the previous page
+                        window.history.back();
+                        // Attempt to close the window/tab
+                        setTimeout(() => {
+                            window.open('', '_self').close();
+                        }, 1000); // Adjust the timeout if needed
+                    });
+                }, 3000); // 3-second delay
             });
         });
     </script>

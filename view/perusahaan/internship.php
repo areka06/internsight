@@ -323,7 +323,7 @@ include '../../controllers/beritaperusahaan.php';
         text-align: justify;
         color: #000;
         display: -webkit-box;
-        -webkit-line-clamp: 7;
+        -webkit-line-clamp: 6;
         -webkit-box-orient: vertical;
         overflow: hidden;
         text-overflow: ellipsis;
