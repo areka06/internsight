@@ -363,10 +363,12 @@ $result = $stmt->get_result();
                         <div>
                             <img src="../../assets/logo.png" class="logoimg">
                         </div>
+                        <a href="/internsight/view/perusahaan/internship.php">
                         <div>
                             <p1>InternSight</p1>
                             <!-- <p2>INFORMATION</p2> -->
                         </div>
+                        </a>
                     </div>
                     <a href="../public/logout.php">
                         <div class="navbox">
@@ -414,7 +416,7 @@ $result = $stmt->get_result();
             <div class="modal" id="modal">
                 <h2>Are you sure you want to delete this internship?</h2>
                 <button class="cancel" id="cancelBtn">Cancel</button>
-                <a href="/../controllers/deleteinternship.php?id=<?php echo $row["id_berita"]; ?>">
+                <a href="/internsight/controllers/deleteinternship.php?id=<?php echo $row["id_berita"]; ?>">
                     <button id="confirmBtn">Ok</button>
                 </a>
             </div>

@@ -5,11 +5,9 @@ if ($_SESSION['role'] != 'admin') {
     exit();
 }
 ?>
-
 <?php
-include '../../controllers/berita.php';
+include '../../controllers/tipsandtrick.php';
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -41,7 +39,6 @@ include '../../controllers/berita.php';
     }
 
     .container {
-        margin-top: 0px;
         padding: 20px;
         display: flex;
         height: 730px;
@@ -161,41 +158,33 @@ include '../../controllers/berita.php';
 
     .firstbox {
         display: flex;
-        flex-direction: column;
         justify-content: center;
         width: 1150px;
-        height: auto;
+        height: 99%;
         border-radius: 30px;
-    }
-
-    .firstbox-title {
-        text-align: center;
-        color: #000;
-        font-family: "Space Grotesk", sans-serif;
-        font-size: 40px;
-        font-weight: 600;
-        line-height: 90px;
-        letter-spacing: -4px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        object-fit: cover;
     }
 
     .firstbox span {
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin-top: 120px;
+        margin-top: 45px;
         width: 1500px;
         height: 100px;
     }
 
-    .firstbox span p {
+    /* .firstbox span p {
         color: #fff;
         font-family: "Space Grotesk", sans-serif;
-        font-size: 60px;
+        font-size: 50px;
         font-weight: 600;
-    }
+    } */
 
     .team {
-        margin-top: -20px;
+        margin-top: 40px;
         width: 400px;
     }
 
@@ -205,8 +194,8 @@ include '../../controllers/berita.php';
     }
 
     .sparkle {
-        width: 70px;
-        height: auto;
+        width: 50px;
+        height: 50px;
     }
 
     .head2 {
@@ -240,179 +229,93 @@ include '../../controllers/berita.php';
         font-family: poppins;
         margin-top: 30px;
     }
-</style>
-<style>
-    /* newspost */
-    .post {
-        width: 32%;
-        height: 530px;
-        background: #fff;
-        border: 1px solid #dfdfdf;
-        border-radius: 10px;
-        margin-top: 40px;
-        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-        font-family: 'poppins', sans-serif;
-    }
 
-    .info {
-        width: 100%;
-        height: 60px;
+    /* second box */
+    .secondbox {
         display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .info .username {
-        width: auto;
-        font-weight: bold;
-        color: #000;
-        font-size: 14px;
-        margin-left: 10px;
-    }
-
-    .info .options {
-        height: 10px;
-        cursor: pointer;
-    }
-
-    .info .user {
-        display: flex;
-        align-items: center;
-    }
-
-    .info .profile-pic {
-        height: 40px;
-        width: 40px;
-        padding: 0;
-        background: none;
-    }
-
-    .info .profile-pic img {
-        border: none;
-    }
-
-    .news-image {
-        padding: 10px;
-        display: flex;
-        flex-wrap: wrap;
+        flex-direction: column;
         justify-content: center;
         width: 100%;
-        height: 30vh;
+        height: auto;
     }
 
-    .news-image img {
-        width: 100%;
-        height: auto;
+    .secondbox span p {
+        text-align: center;
+        color: #000;
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 40px;
+        font-weight: 600;
+        line-height: 90px;
+        letter-spacing: -4px;
+        margin-bottom: 35px;
+    }
+
+    iframe {
+        pointer-events: none;
         border-radius: 10px;
     }
 
-    .post-image {
-        height: auto;
-        object-fit: cover;
+    .cardtips {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-family: 'poppins', sans-serif;
+        background-color: #fff;
+        padding: 10px;
+        width: 380px;
+        height: 450px;
+        border-radius: 10px;
+        box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+        margin-bottom: 50px;
+        margin-right: 90px;
+        margin-left: 90px;
+
     }
 
-    .title {
-        margin-top: 10px;
+    .cards {
+        display: flex;
+        flex-direction: row;
+        font-family: 'poppins', sans-serif;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 20px;
+        gap: 100px;
+    }
+
+    .cards-content {
+        width: 330px;
+    }
+
+    .cards-content h2 {
+        color: #000;
         font-weight: 600;
         font-size: 20px;
-        height: 80px;
-        color: black;
     }
 
-    .post-content {
-        width: 100%;
-        padding: 20px;
-        padding-top: 0px;
-    }
-
-    .description {
+    .cards-content p {
         font-size: 14px;
         text-align: justify;
         color: #000;
         display: -webkit-box;
-        -webkit-line-clamp: 5;
+        -webkit-line-clamp: 7;
         -webkit-box-orient: vertical;
         overflow: hidden;
         text-overflow: ellipsis;
     }
 
-    .post-time {
-        color: rgba(0, 0, 0, 0.5);
-        font-size: 15px;
-    }
-
-    .comment-wrapper {
-        width: 100%;
-        height: 50px;
-        border-radius: 1px solid #dfdfdf;
+    .cards-container {
         display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .comment-wrapper .icon {
-        height: 30px;
-    }
-
-    .comment-box {
-        width: 80%;
-        height: 100%;
-        border: none;
-        outline: none;
-        font-size: 14px;
-    }
-
-    .comment-btn,
-    .action-btn {
-        width: 70px;
-        height: 100%;
-        background: none;
-        border: none;
-        outline: none;
-        text-transform: capitalize;
-        font-size: 16px;
-        color: rgb(0, 162, 255);
-        opacity: 0.5;
-    }
-
-    .wrapper {
-        display: flex;
-        justify-content: space-around;
-    }
-
-    .left-col {
-        display: flex;
+        justify-content: flex-start;
         flex-wrap: wrap;
-        gap: 10px;
-        justify-content: space-between;
-        width: 90%;
-    }
-</style>
-<style>
-    .button-create {
-        width: 150px;
-        left: 935px;
-        top: 20px;
-        position: relative;
-        border: 2px solid #2A83FD;
-        background-color: #2A83FD;
-        border-radius: 0.9em;
-        padding: 0.8em 1.2em 0.8em 1em;
-        transition: all ease-in-out 0.2s;
-        font-size: 16px;
     }
 
-    .button-create span {
+    /* section{
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
-        color: #fff;
-        font-weight: 600;
-    }
-
-    .button-create:hover {
-        background-color: #0071e2;
-    }
+    } */
 </style>
 
 <body>
@@ -421,7 +324,7 @@ include '../../controllers/berita.php';
             <div class="navbar">
                 <div class="logo">
                     <div>
-                        <img src="../../../internsight/assets/logo.png" class="logoimg">
+                        <img src="../../assets/logo.png" class="logoimg">
                     </div>
                     <div>
                         <p1>InternSight</p1>
@@ -447,44 +350,28 @@ include '../../controllers/berita.php';
         </nav>
         <section class="container-firstbox">
             <div class="title-internship">
-                <h2>Daftar Internship</h2>
+                <h2>Daftar Tips & Trick</h2>
             </div>
-            <button class="button-create">
-                    <span>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-                            <path fill="none" d="M0 0h24v24H0z"></path>
-                            <path fill="currentColor" d="M11 11V5h2v6h6v2h-6v6h-2v-6H5v-2z"></path>
-                        </svg> Create
-                    </span>
-                </button>
             <div class="firstbox">
-                <div class="wrapper">
-                    <div class="left-col">
+                <span>
+                    <div class="cards-container">
                         <?php
                         if ($result->num_rows > 0) {
                             while ($row = $result->fetch_assoc()) {
                         ?>
-                                <!-- // status wrappers -->
-                                <div class="post">
-                                    <a href="/internsight/view/admin/pageinternship.php?id=<?php echo $row["id_berita"]; ?>">
-                                        <div class="news-image">
-                                            <img src='../../assets/storage/<?php echo $row["gambar_berita"]; ?>' class="post-image" alt="">
-                                        </div>
-                                        <div class="post-content">
-                                            <p class="title"><?php echo $row["judul_berita"]; ?></p>
-                                            <p class="description"><?php echo $row["deskripsi_berita"]; ?></p>
-                                            <div class="info">
-                                                <div class="user">
-                                                    <div class="profile-pic"><img height="42px" src="https://medibase-software.nl/wp-content/uploads/2020/06/MedibaseSoftware_Team-Egee.png" alt=""></div>
-                                                    <p class="username"><?php echo $row["nama_perusahaan"]; ?></p>
-                                                </div>
-                                                <img src="img/option.PNG" class="options" alt="">
-                                            </div>
-                                            <p class="post-time"><?php echo $row["tanggal_awal"] . " hingga " . $row["tanggal_akhir"]; ?></p>
+                                <div class="cardtips">
+                                    <a href="/internsight/view/admin/pagetipsandtrick.php?id=<?php echo $row["id_informasi"]; ?>">
+                                        <iframe width="330" height="200px" src="<?php echo $row["video"]; ?>" frameborder="0" allowfullscreen></iframe>
+                                        <div class="cards-content">
+                                            <h2>
+                                                <?php echo $row["judul_informasi"]; ?>
+                                            </h2>
+                                            <p>
+                                                <?php echo $row["deskripsi_informasi"]; ?>
+                                            </p>
                                         </div>
                                     </a>
                                 </div>
-                                <!-- // +5 more post elements -->
                         <?php
                             }
                         } else {
@@ -492,9 +379,7 @@ include '../../controllers/berita.php';
                         }
                         ?>
                     </div>
-                </div>
-                <!-- <span>
-                </span> -->
+                </span>
             </div>
 
         </section>

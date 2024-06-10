@@ -6,28 +6,9 @@ if ($_SESSION['role'] != 'perusahaan') {
 }
 ?>
 <?php
-include '../../config/db.php';
-
-// Mengecek koneksi
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
-// Mendapatkan id_informasi dari URL
-$id_berita = isset($_GET['id']) ? intval($_GET['id']) : 0;
-
-// Query untuk mengambil data berita berdasarkan id_informasi
-$sql = "SELECT b.id_berita, b.judul_berita, b.gambar_berita, b.tanggal_awal, b.tanggal_akhir, b.nama_internship, b.deskripsi_berita, b.id_kategori, b.id_perusahaan, k.kategori, p.nama_perusahaan 
-        FROM berita b 
-        JOIN kategori k ON b.id_kategori = k.id_kategori
-        JOIN akun_perusahaan p ON b.id_perusahaan = p.id_perusahaan
-        WHERE b.id_berita = ?";
-
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("i", $id_berita);
-$stmt->execute();
-$result = $stmt->get_result();
+include '../../controllers/editinternship.php';
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -201,13 +182,6 @@ $result = $stmt->get_result();
         font-weight: 700;
     }
 
-    .firstbox p {
-        text-align: justify;
-        font-family: 'poppins', sans-serif;
-        font-size: 16px;
-        font-weight: 400;
-    }
-
     /* second box */
     .secondbox {
         display: flex;
@@ -302,16 +276,18 @@ $result = $stmt->get_result();
     .post-image {
         height: auto;
         object-fit: cover;
+        margin-bottom: 30px;
     }
 
     .title {
-        margin-top: 10px;
         font-weight: 600;
         font-size: 20px;
-        height: 80px;
+        height: 60px;
+        color: black;
     }
 
     .post-content {
+        margin-top: 40px;
         width: 100%;
         padding: 20px;
         padding-top: 0px;
@@ -320,9 +296,10 @@ $result = $stmt->get_result();
 
 
     .description {
+        color: black;
         font-size: 14px;
         line-height: 20px;
-        margin-bottom: 80px;
+        height: 120px;
     }
 
     .post-time {
@@ -378,7 +355,8 @@ $result = $stmt->get_result();
     }
 </style>
 <style>
-    .button {/* form */
+    .button {
+        /* form */
         appearance: none;
         font: inherit;
         border: none;
@@ -489,10 +467,12 @@ $result = $stmt->get_result();
         font-size: 0.875rem;
         margin-top: 0.5rem;
         color: #8d8d8d;
-    }/* form */
+    }
+
+    /* form */
 </style>
 <style>
-     .form {
+    .form {
         /* file */
         background-color: #fff;
         /* box-shadow: 0 10px 60px rgb(218, 229, 255); */
@@ -574,23 +554,36 @@ $result = $stmt->get_result();
 
     #file-input::file-selector-button:hover {
         background: #0d45a5;
-    }/* file */
+    }
+
+    /* file */
 </style>
+
 <body>
-    <?php if ($result->num_rows > 0) {
-        // Output data dari baris
-        $row = $result->fetch_assoc(); ?>
+    <?php
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+
+        $judul_berita = $row['judul_berita'];
+        $nama_internship = $row['nama_internship'];
+        $deskripsi_berita = $row['deskripsi_berita'];
+        $tanggal_awal = $row['tanggal_awal'];
+        $tanggal_akhir = $row['tanggal_akhir'];
+        $gambar_berita = $row['gambar_berita']
+    ?>
         <div class="container">
             <nav>
                 <div class="navbar">
                     <div class="logo">
                         <div>
-                            <img src="Asset/logo.png" class="logoimg">
+                            <img src="../../assets/logo.png" class="logoimg">
                         </div>
-                        <div>
-                            <p1>InternSight</p1>
-                            <!-- <p2>INFORMATION</p2> -->
-                        </div>
+                        <a href="/internsight/view/perusahaan/pageinternship.php?id=<?php echo $row["id_berita"]; ?>">
+                            <div>
+                                <p1>InternSight</p1>
+                                <!-- <p2>INFORMATION</p2> -->
+                            </div>
+                        </a>
                     </div>
                     <a href="/internsight/public/logout.php">
                         <div class="navbox">
@@ -607,10 +600,11 @@ $result = $stmt->get_result();
                         <!-- <h1 style="color:#000">Edit Your Data</h1>
                         <p style="color:#000"></p> -->
                         <div>
+                            <form class="form" action="../../controllers/posteditinternship.php" method="POST" enctype="multipart/form-data">
                             <div class="container">
                                 <div class="modal">
                                     <div class="modal__header">
-                                        <span class="modal__title">Mengedit Berita</span><button class="button button--icon"><svg width="24" viewBox="0 0 24 24" height="24" xmlns="http://www.w3.org/2000/svg">
+                                        <span class="modal__title">Mengedit Internship</span><button class="button button--icon"><svg width="24" viewBox="0 0 24 24" height="24" xmlns="http://www.w3.org/2000/svg">
                                                 <path fill="none" d="M0 0h24v24H0V0z"></path>
                                                 <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z">
                                                 </path>
@@ -619,26 +613,26 @@ $result = $stmt->get_result();
                                     <div class="modal__body">
                                         <div class="input">
                                             <label class="input__label">Judul Internship</label>
-                                            <input class="input__field" type="text">
+                                            <input class="input__field" type="text" name="judul_internship" value="<?php echo $judul_berita; ?>">
                                             <p class="input__description">The title must contain a maximum of 32 characters</p>
                                         </div>
                                         <div class="input">
                                             <label class="input__label">Nama Intersnhip</label>
-                                            <input class="input__field" type="text">
+                                            <input class="input__field" type="text" name="nama_internship" value="<?php echo $nama_internship; ?>">
                                             <p class="input__description">The title must contain a maximum of 32 characters</p>
                                         </div>
                                         <div class="input">
                                             <label class="input__label">Deskripsi Lowongan</label>
-                                            <textarea class="input__field input__field--textarea"></textarea>
+                                            <textarea class="input__field input__field--textarea" name="deskripsi_lowongan"><?php echo $deskripsi_berita; ?></textarea>
                                             <p class="input__description">Give your vacancy a good description so everyone know what's it for</p>
                                         </div>
                                         <div class="input">
                                             <label class="input__label">Tanggal Awal</label>
-                                            <input class="input_field input__field input__field--textarea" type='date'>
+                                            <input class="input_field input__field input__field--textarea" type='date' name="tanggal_awal" value="<?php echo $tanggal_awal; ?>">
                                         </div>
                                         <div class="input">
                                             <label class="input__label">Tanggal Akhir</label>
-                                            <input class="input_field input__field input__field--textarea" type='date'>
+                                            <input class="input_field input__field input__field--textarea" type='date' name="tanggal_akhir" value="<?php echo $tanggal_akhir; ?>">
                                         </div>
                                         <div class="input">
                                             <label class="input__label">Gambar Internship</label>
@@ -650,7 +644,8 @@ $result = $stmt->get_result();
                                                 <label for="file-input" class="drop-container">
                                                     <span class="drop-title">Drop files here</span>
                                                     or
-                                                    <input type="file" accept="image/*" required="" id="file-input">
+                                                    <input type="file" accept="image/*"  id="file-input" name="gambar_berita" value="sdada">
+                                                    <?php echo $gambar_berita; ?>
                                                 </label>
                                             </form>
                                             <p class="input__description">Drop a Job Image that matches the description</p>
@@ -661,6 +656,7 @@ $result = $stmt->get_result();
                                     </div>
                                 </div>
                             </div>
+                            </form>
                         </div>
                     </div>
                     <div class="card-container">
@@ -689,9 +685,12 @@ $result = $stmt->get_result();
 
                 </div> -->
             </section>
-        <?php } else {
-        echo "No details found for this information.";
-    } ?>
+
+        <?php
+    } else {
+        echo "No news found with the provided ID.";
+    }
+        ?>
 </body>
 
 </html>

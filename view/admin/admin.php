@@ -153,7 +153,7 @@ if ($_SESSION['role'] != 'admin') {
         height: 750px;
         border-radius: 30px;
         background-color: black;
-        background-image: url("Asset/gauze.jpeg");
+        background-image: url("../../assets/gauze.jpeg");
         background-repeat: no-repeat;
         background-size: cover;
         object-fit: cover;

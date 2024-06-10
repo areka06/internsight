@@ -259,6 +259,8 @@ include '../../controllers/berita.php';
     }
 
     .info {
+        position: relative;
+        bottom: 0px;
         width: 100%;
         height: 60px;
         display: flex;
@@ -315,11 +317,14 @@ include '../../controllers/berita.php';
         height: auto;
         object-fit: cover;
     }
-
+    .post-image p{
+        height: 100px;
+    }
     .title {
         margin-top: 10px;
         font-weight: 600;
         font-size: 30px;
+        color: black;
     }
 
     .post-content {
@@ -328,12 +333,15 @@ include '../../controllers/berita.php';
         padding-top: 0px;
     }
 
-
-
     .description {
         font-size: 14px;
-        line-height: 20px;
-        margin-bottom: 80px;
+        text-align: justify;
+        color: #000;
+        display: -webkit-box;
+        -webkit-line-clamp: 7;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
     .post-time {

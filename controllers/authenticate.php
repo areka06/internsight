@@ -33,8 +33,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Check in perusahaan table
     $stmt = $conn->prepare('SELECT * FROM akun_perusahaan WHERE username = ? AND password = ?');
-    $stmt->execute([$username, $password]);
-    $perusahaan = $stmt->fetch();
+    $stmt->bind_param('ss', $username, $password);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $perusahaan = $result->fetch_assoc(); // Mengambil hasil sebagai array asosiatif
     
     if ($perusahaan) {
         $_SESSION['user'] = $perusahaan;
@@ -42,6 +44,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION['id_perusahaan'] = $perusahaan['id_perusahaan']; // Simpan id_perusahaan ke dalam session
         $_SESSION['nama_perusahaan'] = $perusahaan['nama_perusahaan'];
         header('Location: ../view/perusahaan/dashboard.php');
+        exit();
+    } else {
+        // Handle login failure (misalnya, kembali ke halaman login dengan pesan error)
+        header('Location: ../view/login.php?error=invalid_credentials');
         exit();
     }
 

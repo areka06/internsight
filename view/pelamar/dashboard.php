@@ -32,9 +32,11 @@ if ($_SESSION['role'] !== 'pelamar') {
         margin-left: 20px;
         margin-right: 20px;
     }
-    a{
+
+    a {
         text-decoration: none;
     }
+
     .container {
         margin-top: 20px
     }
@@ -325,6 +327,7 @@ if ($_SESSION['role'] !== 'pelamar') {
         justify-content: center;
         width: 1300px;
     }
+
     /* card1 */
     .card {
         position: relative;
@@ -402,6 +405,7 @@ if ($_SESSION['role'] !== 'pelamar') {
         font-weight: 400;
         margin-top: 40px;
     }
+
     /* card2 */
     .card-2 {
         position: relative;
@@ -479,6 +483,7 @@ if ($_SESSION['role'] !== 'pelamar') {
         font-weight: 400;
         margin-top: 40px;
     }
+
     /* fifthbox */
     .fifthbox {
         /* background-color: #000; */
@@ -501,7 +506,7 @@ if ($_SESSION['role'] !== 'pelamar') {
         letter-spacing: -2px;
     }
 
-    .logo-perusahaan{
+    .logo-perusahaan {
         margin-top: -50px;
         width: 100%;
         display: flex;
@@ -524,7 +529,7 @@ if ($_SESSION['role'] !== 'pelamar') {
                 </div>
                 <div class="navbutton">
                     <a href="/internsight/view/pelamar/dashboard.php"><button>Home</button></a>
-                    <a href="/internsight/view/pelamar/internship.php"><button>Cari Kerja</button></a> 
+                    <a href="/internsight/view/pelamar/internship.php"><button>Cari Kerja</button></a>
                     <a href="/internsight/view/pelamar/tipsandtrick.php"><button>Tips & Tricks</button></a>
                     <a href="/internsight/view/pelamar/tentangkami.php"><button>Tentang Kami</button></a>
                 </div>
@@ -540,7 +545,7 @@ if ($_SESSION['role'] !== 'pelamar') {
         <section>
             <div class="firstbox">
                 <span>
-                    <p>Saatnya Cari Pekerjaan</p>
+                    <p>Saatnya Cari Info Internship</p>
                     <div class="head2">
                         <img src="../../assets/sparkle.png" class="sparkle">
                         <p> Dengan Mudah, Disini! </p>
@@ -560,38 +565,42 @@ if ($_SESSION['role'] !== 'pelamar') {
             </div>
             <div class="fourthbox">
                 <span>
-                    <p>Cara MUDAH untuk dapat kerja, GRATIS</p>
+                    <p>Cara MUDAH untuk dapat internship, GRATIS</p>
                 </span>
                 <div class="flex-container">
                     <div class="card-container">
-                        <a href="internship.php"><div class="card">
-                            <div class="content">
-                                <p class="heading">Saya Mencari Pekerjaan</p>
-                                <p class="para">
-                                    Cari Loker Aman Yang Sesuai Untukmu!
-                                </p>
+                        <a href="internship.php">
+                            <div class="card">
+                                <div class="content">
+                                    <p class="heading">Saya Mencari Pekerjaan</p>
+                                    <p class="para">
+                                        Cari Loker Aman Yang Sesuai Untukmu!
+                                    </p>
+                                </div>
                             </div>
-                        </div></a>
+                        </a>
                         <div class="cardlist">
-                            <p>Cari Loker yang SESUAI passionmu</p>
-                            <p>Cari tanda AMAN untuk lamar kerja yang terverifikasi</p>
+                            <p>Cari Internship yang SESUAI passionmu</p>
+                            <p>Cari tanda AMAN untuk lamar internship yang terverifikasi</p>
                             <p>Buat CV PINTAR untuk tampil profesional</p>
                             <p>Pantau STATUS lamaranmu</p>
                             <p>Lowongan Pekerjaan Yang Kredibel</p>
                         </div>
                     </div>
                     <div class="card-container">
-                        <a href="tipsandtrick.php"><div class="card-2">
-                            <div class="content">
-                                <p class="heading">Saya Butuh Tips & Trick</p>
-                                <p class="para">
-                                    Cari Tips & Trick dan Upgrade CV-mu!
-                                </p>
+                        <a href="tipsandtrick.php">
+                            <div class="card-2">
+                                <div class="content">
+                                    <p class="heading">Saya Butuh Tips & Trick</p>
+                                    <p class="para">
+                                        Cari Tips & Trick dan Upgrade CV-mu!
+                                    </p>
+                                </div>
                             </div>
-                        </div></a>
+                        </a>
                         <div class="cardlist">
-                            <p>Cari Loker yang SESUAI passionmu</p>
-                            <p>Cari tanda AMAN untuk lamar kerja yang terverifikasi</p>
+                            <p>Cari Internship yang SESUAI passionmu</p>
+                            <p>Cari tanda AMAN untuk lamar internship yang terverifikasi</p>
                             <p>Buat CV PINTAR untuk tampil profesional</p>
                             <p>Pantau STATUS lamaranmu</p>
                             <p>Lowongan Pekerjaan Yang Kredibel</p>

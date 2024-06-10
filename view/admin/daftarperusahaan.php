@@ -5,6 +5,9 @@ if ($_SESSION['role'] != 'admin') {
     exit();
 }
 ?>
+<?php
+include '../../controllers/perusahaan.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,19 +31,21 @@ if ($_SESSION['role'] != 'admin') {
     }
 
     body {
+        overflow: hidden;
     }
-    a{
+
+    a {
         text-decoration: none;
     }
+
     .container {
         padding: 20px;
         display: flex;
-        height: 100vh;
+        height: 730px;
     }
 
     /* navbar */
-    nav {
-    }
+    nav {}
 
     .navbar {
         display: flex;
@@ -53,7 +58,7 @@ if ($_SESSION['role'] != 'admin') {
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px);
         box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
-        justify-content:space-around;
+        justify-content: space-around;
         transition: border-radius 0.3s ease-in-out;
     }
 
@@ -143,13 +148,14 @@ if ($_SESSION['role'] != 'admin') {
 
     /* main */
     /* first box */
-    .container-firstbox{
-    display:block;
-     width: 2000px;
-     height: 100%;
-     overflow-x: hidden;
-     margin-left: 30px;
+    .container-firstbox {
+        display: block;
+        width: 2000px;
+        height: 100%;
+        overflow-x: hidden;
+        margin-left: 30px;
     }
+
     .firstbox {
         display: flex;
         justify-content: center;
@@ -167,9 +173,9 @@ if ($_SESSION['role'] != 'admin') {
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin-top: 75px;
+        margin-top: 25px;
         width: 1500px;
-        height: 100px;
+        height: 500px;
     }
 
     .firstbox span p {
@@ -219,12 +225,84 @@ if ($_SESSION['role'] != 'admin') {
         height: 100px;
     }
 
+    .title-internship h2 {
+        font-size: 40px;
+        text-align: center;
+        font-family: poppins;
+        margin-top: 30px;
+        color: white;
+    }
+</style>
+<style>
+    /* Board*/
+    .board {
+        width: 94%;
+        margin: 30px 0 30px 0;
+        overflow: auto;
+        /* background: #fff0f0; */
+        border-radius: 8px;
+        box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
+    }
+
+    table {
+        font-family: 'poppins', sans-serif;
+        border-collapse: collapse;
+    }
+
+    thead td {
+        font-size: 18px;
+        font-weight: 600;
+        text-align: start;
+        padding: 20px;
+        background-color: #084cdf;
+        color: #fff;
+    }
+
+    thead tr td {
+        background-color: #2A83FD;
+        padding: 20px 20px;
+        text-align: center;
+    }
+
+    tbody tr {
+        box-shadow: #000000;
+    }
+
+    tbody tr td {
+        background-color: #fff;
+
+        padding: 20px 20px;
+        text-align: center;
+    }
+
+    .view {
+        font-weight: 500;
+    }
+
+    .add {
+        background-color: #ffffff;
+        border-radius: 14px;
+        width: 100px;
+        height: 30px;
+        border-color: transparent;
+
+    }
+
+    .edit {
+        font-weight: 500;
+    }
+
+    .delete {
+        font-weight: 500;
+    }
+
+    /* Board*/
 </style>
 
 <body>
     <div class="container">
         <nav>
-            <div class="navbar">    
+            <div class="navbar">
                 <div class="logo">
                     <div>
                         <img src="../../assets/logo.png" class="logoimg">
@@ -236,9 +314,9 @@ if ($_SESSION['role'] != 'admin') {
                 </div>
                 <div class="navbutton">
                     <a href="/internsight/view/admin/dashboard.php"><button>Home</button></a>
-                    <a href="/internsight/view/admin/internship.php"><button>Daftar Internship</button></a> 
-                    <a href="/internsight/view/admin/daftartipsandtrick.php"><button>Daftar Tips and Trick</button></a> 
-                    <a href="/internsight/view/admin/daftarpelamar.php"><button>Daftar Pelamar</button></a> 
+                    <a href="/internsight/view/admin/internship.php"><button>Daftar Internship</button></a>
+                    <a href="/internsight/view/admin/daftartipsandtrick.php"><button>Daftar Tips and Trick</button></a>
+                    <a href="/internsight/view/admin/daftarpelamar.php"><button>Daftar Pelamar</button></a>
                     <a href="/internsight/view/admin/daftarperusahaan.php"><button>Daftar Perusahaan</button></a>
                     <a href="/internsight/view/admin/report.php"><button>Report</button></a>
                 </div>
@@ -254,24 +332,40 @@ if ($_SESSION['role'] != 'admin') {
         <section class="container-firstbox">
             <div class="firstbox">
                 <span>
-                    <p>Selamat Datang MinSight</p>
-                    <div class="head2">
-                        <img src="../../../internsight/assets/sparkle.png" class="sparkle">
-                        <p> Pantau Semuanya Dengan Mudah, Disini! </p>
-                        <img src="../../../internsight/assets/sparkle.png" class="sparkle">
+                    <div class="title-internship">
+                        <h2>Daftar Perusahaan</h2>
                     </div>
-                    <div class="teamcontainer">
-                        <!-- <div class="card1">
-                            <button>Cari Kerja</button>
-                        </div> -->
-                        <img src="https://asaprentals.com.au/wp-content/uploads/2020/10/team.png" alt="" class="team">
-                        <!-- <div class="card2">
-                            <button>Cari Kerja</button>
-                        </div> -->
+                    <div class="board">
+                        <table width="100%">
+                            <thead>
+                                <tr>
+                                    <td>ID Perusahaan</td>
+                                    <td>Nama Perusahaan</td>
+                                    <td>Email Perusahaan</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                if ($result->num_rows > 0) {
+                                    while ($row = $result->fetch_assoc()) {
+                                ?>
+                                        <tr>
+                                            <td><?php echo $row["id_perusahaan"]; ?></td>
+                                            <td><?php echo $row["nama_perusahaan"]; ?></td>
+                                            <td><?php echo $row["username"]; ?></td>
+                                        </tr>
+                                <?php
+                                    }
+                                } else {
+                                    echo "<p>Tidak ada berita tersedia.</p>";
+                                }
+                                ?>
+                            </tbody>
+                        </table>
                     </div>
                 </span>
             </div>
-            
+
         </section>
     </div>
 </body>

@@ -28,14 +28,15 @@
             padding: 15px;
             background-color: white;
             width: 75%;
-            height: 80vh;
+            height: 560px;
             border-radius: 20px;
             box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
             display: flex;
+            align-items: center;
         }
 
         .image {
-            height: 100%;
+            height: 560px;
             width: 50%;
             border-radius: 20px;
             overflow: hidden;
@@ -44,10 +45,10 @@
 
         .image .main-profil {
             left: 10%;
-            top: 230px;
+            top: 215px;
             position: absolute;
-            width: 30%;
-            height: 60%;
+            width: 340px;
+            height: 360px;
             border-radius: 20px;
         }
 
@@ -89,7 +90,7 @@
             gap: 10px;
             background-color: #ffffff;
             padding: 0px;
-            width: 450px;
+            width: 400px;
             border-radius: 20px;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         }
@@ -207,19 +208,22 @@
         </section>
         <section class="login">
             <h1>Register</h1>
-            <?php if (isset($_SESSION['error'])): ?>
-                <p style="color: red; margin: 0;"><?php echo htmlspecialchars($_SESSION['error']); unset($_SESSION['error']); ?></p>
+            <?php if (isset($_SESSION['error'])) : ?>
+                <p style="color: red; margin: 0;"><?php echo htmlspecialchars($_SESSION['error']);
+                                                    unset($_SESSION['error']); ?></p>
             <?php endif; ?>
             <form class="form" action="/internsight/controllers/registerpelamar.php" method="post">
                 <div class="flex-column">
                     <label>Full Name</label>
                 </div>
                 <div class="inputForm">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" viewBox="0 0 32 32" height="20">
-                        <g data-name="Layer 3" id="Layer_3">
-                            <path d="m30.853 13.87a15 15 0 0 0 -29.729 4.082 15.1 15.1 0 0 0 12.876 12.918 15.6 15.6 0 0 0 2.016.13 14.85 14.85 0 0 0 7.715-2.145 1 1 0 1 0 -1.031-1.711 13.007 13.007 0 1 1 5.458-6.529 2.149 2.149 0 0 1 -4.158-.759v-10.856a1 1 0 0 0 -2 0v1.726a8 8 0 1 0 .2 10.325 4.135 4.135 0 0 0 7.83.274 15.2 15.2 0 0 0 .823-7.455zm-14.853 8.13a6 6 0 1 1 6-6 6.006 6.006 0 0 1 -6 6z"></path>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                        <g transform="translate(-4, 0)">
+                            <circle cx="12" cy="7" r="4"></circle>
+                            <path d="M5.5 20.5a8.38 8.38 0 0 1 13 0"></path>
                         </g>
                     </svg>
+
                     <input placeholder="Enter your Name" class="input" type="text" id="nama_pelamar" name="nama_pelamar" required>
                 </div>
                 <div class="flex-column">

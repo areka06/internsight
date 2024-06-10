@@ -7,7 +7,7 @@ if ($_SESSION['role'] != 'perusahaan') {
 ?>
 
 <?php
-include '../../controllers/berita.php';
+include '../../controllers/beritaperusahaan.php';
 ?>
 
 <!DOCTYPE html>
@@ -307,6 +307,7 @@ include '../../controllers/berita.php';
         font-weight: 600;
         font-size: 20px;
         height: 80px;
+        color: black;
     }
 
     .post-content {
@@ -319,8 +320,13 @@ include '../../controllers/berita.php';
 
     .description {
         font-size: 14px;
-        line-height: 20px;
-        margin-bottom: 80px;
+        text-align: justify;
+        color: #000;
+        display: -webkit-box;
+        -webkit-line-clamp: 7;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
     .post-time {
@@ -392,7 +398,6 @@ include '../../controllers/berita.php';
                 <div class="navbutton">
                     <a href="/internsight/view/perusahaan/dashboard.php"><button>Home</button></a>
                     <a href="/internsight/view/perusahaan/internship.php"><button>Daftar Internship</button></a>
-                    <a href="/internsight/view/perusahaan/tentangkami.php"><button>Tentang Kami</button></a>
                 </div>
                 <a href="/internsight/public/logout.php">
                     <div class="navbox">

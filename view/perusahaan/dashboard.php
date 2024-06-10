@@ -237,9 +237,8 @@ if ($_SESSION['role'] != 'perusahaan') {
                 <div class="navbutton">
                     <a href="/internsight/view/perusahaan/dashboard.php"><button>Home</button></a>
                     <a href="/internsight/view/perusahaan/internship.php"><button>Daftar Internship</button></a> 
-                    <a href="/internsight/view/perusahaan/pageinternship.php"><button>Page Edit</button></a> 
                 </div>
-                <a href="admin.php">
+                <a href="/internsight/public/logout.php">
                     <div class="navbox">
                         <span>
                             <p>Logout</p>

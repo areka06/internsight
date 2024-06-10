@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="../assets/logo.png">
     <!-- tailwind -->
     <style>
         body {
@@ -28,15 +29,15 @@
             padding: 15px;
             background-color: white;
             width: 75%;
-            height: 80vh;
+            height: 560px;
             border-radius: 20px;
             box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
             display: flex;
-
+            align-items: center;
         }
 
         .image {
-            height: 100%;
+            height: 560px;
             width: 50%;
             border-radius: 20px;
             overflow: hidden;
@@ -45,10 +46,10 @@
 
         .image .main-profil {
             left: 10%;
-            top: 230px;
+            top: 215px;
             position: absolute;
-            width: 30%;
-            height: 60%;
+            width: 340px;
+            height: 360px;
             border-radius: 20px;
         }
 
@@ -90,7 +91,7 @@
             gap: 10px;
             background-color: #ffffff;
             padding: 0px;
-            width: 450px;
+            width: 400px;
             border-radius: 20px;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         }
