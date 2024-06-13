@@ -317,9 +317,11 @@ include '../../controllers/berita.php';
         height: auto;
         object-fit: cover;
     }
-    .post-image p{
+
+    .post-image p {
         height: 100px;
     }
+
     .title {
         margin-top: 10px;
         font-weight: 600;
@@ -412,7 +414,7 @@ include '../../controllers/berita.php';
                 </div>
                 <div class="navbutton">
                     <a href="/internsight/view/pelamar/dashboard.php"><button>Home</button></a>
-                    <a href="/internsight/view/pelamar/internship.php"><button>Cari Kerja</button></a>
+                    <a href="/internsight/view/pelamar/internship.php"><button>Cari Internship</button></a>
                     <a href="/internsight/view/pelamar/tipsandtrick.php"><button>Tips & Tricks</button></a>
                     <a href="/internsight/view/pelamar/tentangkami.php"><button>Tentang Kami</button></a>
                 </div>
@@ -450,6 +452,9 @@ include '../../controllers/berita.php';
         <span>
             <p>Lowongan Kerja Untuk Insighters</p>
         </span>
+        <!-- Add this input field inside the navbar div -->
+        <input type="text" id="search" placeholder="Search jobs..." style="width: 200px; padding: 5px; border-radius: 4px; border: 1px solid #ccc; margin-right: 20px;">
+
         <section class="main">
             <div class="wrapper">
                 <div class="left-col">

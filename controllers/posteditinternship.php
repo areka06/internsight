@@ -1,58 +1,70 @@
 <?php
-// Check if form is submitted
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Handle form data
-    $judul_internship = $_POST['judul_internship'];
+session_start();
+
+include '../config/db.php';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $id_berita = $_POST['id_berita'];
+    $judul_berita = $_POST['judul_berita'];
     $nama_internship = $_POST['nama_internship'];
-    $deskripsi_lowongan = $_POST['deskripsi_lowongan'];
+    $deskripsi_berita = $_POST['deskripsi_berita'];
     $tanggal_awal = $_POST['tanggal_awal'];
     $tanggal_akhir = $_POST['tanggal_akhir'];
+    $id_kategori = $_POST['id_kategori'];
+    $id_perusahaan = $_POST['id_perusahaan']; 
 
-    // Handle file upload
-    $targetDir = "../../assets/storage/";
-    $targetFile = $targetDir . basename($_FILES["gambar_berita"]["name"]);
     $uploadOk = 1;
-    $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
+    $gambar_berita = $_FILES["gambar_berita"]["name"];
 
-    // Check if image file is a actual image or fake image
-    if ($_FILES["gambar_berita"]["tmp_name"] != "") {
+    if (!empty($gambar_berita)) {
+        $target_dir = "../assets/storage/";
+        $target_file = $target_dir . basename($gambar_berita);
+        $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+
         $check = getimagesize($_FILES["gambar_berita"]["tmp_name"]);
-        if ($check !== false) {
-            $uploadOk = 1;
-        } else {
-            $uploadOk = 0;
+        if ($check === false) {
+            $_SESSION['error_message'] = "File is not an image.";
+            header("Location: ../view/perusahaan/internship.php"); 
+            exit; 
+        }
+
+
+        if (file_exists($target_file)) {
+            $_SESSION['error_message'] = "Sorry, file already exists.";
+            header("Location: ../view/perusahaan/internship.php"); 
+            exit; 
+        }
+
+
+        if ($_FILES["gambar_berita"]["size"] > 50000000) {
+            $_SESSION['error_message'] = "Sorry, your file is too large.";
+            header("Location: ../view/perusahaan/internship.php"); 
+            exit; 
+        }
+
+        if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif") {
+            $_SESSION['error_message'] = "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+            header("Location: ../view/perusahaan/internship.php"); 
+            exit; 
+        }
+
+ 
+        if (!move_uploaded_file($_FILES["gambar_berita"]["tmp_name"], $target_file)) {
+            $_SESSION['error_message'] = "Sorry, there was an error uploading your file.";
+            header("Location: ../view/perusahaan/internship.php"); 
+            exit;
         }
     } else {
-        $uploadOk = 0;
-    }
-    
-
-    // Check file size
-    if ($_FILES["gambar_berita"]["size"] > 5000000) {
-        echo "Sorry, your file is too large.";
-        $uploadOk = 0;
+        $gambar_berita = $_POST['gambar_berita_lama'];
     }
 
-    // Allow certain file formats
-    if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-        && $imageFileType != "gif") {
-        echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-        $uploadOk = 0;
-    }
+    $sql = "UPDATE berita SET judul_berita='$judul_berita', nama_internship='$nama_internship', deskripsi_berita='$deskripsi_berita', tanggal_awal='$tanggal_awal', tanggal_akhir='$tanggal_akhir', id_kategori='$id_kategori', gambar_berita='$gambar_berita', id_perusahaan='$id_perusahaan' WHERE id_berita='$id_berita'";
 
-    // Check if $uploadOk is set to 0 by an error
-    if ($uploadOk == 0) {
-        echo "Sorry, your file was not uploaded.";
-    // if everything is ok, try to upload file
+    if ($conn->query($sql) === TRUE) {
+        $_SESSION['success_message'] = "Record updated successfully";
+        header("Location: ../view/perusahaan/internship.php"); 
     } else {
-        if (move_uploaded_file($_FILES["gambar_berita"]["tmp_name"], $targetFile)) {
-            echo "The file " . basename($_FILES["gambar_berita"]["name"]) . " has been uploaded.";
-        } else {
-            echo "Sorry, there was an error uploading your file.";
-        }
+        $_SESSION['error_message'] = "Error: " . $sql . "<br>" . $conn->error;
     }
-
-    // Update database with form data and file name
-    // Add your database update logic here
 }
 ?>

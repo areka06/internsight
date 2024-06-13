@@ -317,6 +317,32 @@ include '../../controllers/tipsandtrick.php';
         align-items: center;
     } */
 </style>
+<style>
+    .button-create {
+        width: 150px;
+        left: 935px;
+        top: 20px;
+        position: relative;
+        border: 2px solid #2A83FD;
+        background-color: #2A83FD;
+        border-radius: 0.9em;
+        padding: 0.8em 1.2em 0.8em 1em;
+        transition: all ease-in-out 0.2s;
+        font-size: 16px;
+    }
+
+    .button-create span {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+        font-weight: 600;
+    }
+
+    .button-create:hover {
+        background-color: #0071e2;
+    }
+</style>
 
 <body>
     <div class="container">
@@ -349,6 +375,14 @@ include '../../controllers/tipsandtrick.php';
             </div>
         </nav>
         <section class="container-firstbox">
+            <button class="button-create">
+                <span>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                        <path fill="none" d="M0 0h24v24H0z"></path>
+                        <path fill="currentColor" d="M11 11V5h2v6h6v2h-6v6h-2v-6H5v-2z"></path>
+                    </svg> Create
+                </span>
+            </button>
             <div class="title-internship">
                 <h2>Daftar Tips & Trick</h2>
             </div>

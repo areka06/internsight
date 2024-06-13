@@ -192,7 +192,11 @@ $result = $stmt->get_result();
         margin-right: 80px;
         height: 800px;
     }
-
+    .nama-internship{
+        margin-bottom: 20px;
+        font-size: 20px;
+        font-family: poppins;
+    }
     .firstbox h1 {
         text-align: start;
         color: #000;
@@ -364,10 +368,10 @@ $result = $stmt->get_result();
                             <img src="../../assets/logo.png" class="logoimg">
                         </div>
                         <a href="/internsight/view/perusahaan/internship.php">
-                        <div>
-                            <p1>InternSight</p1>
-                            <!-- <p2>INFORMATION</p2> -->
-                        </div>
+                            <div>
+                                <p1>InternSight</p1>
+                                <!-- <p2>INFORMATION</p2> -->
+                            </div>
                         </a>
                     </div>
                     <a href="../public/logout.php">
@@ -383,22 +387,23 @@ $result = $stmt->get_result();
                 <div class="firstbox">
 
                     <div class="content-berita">
-                        <h1 style="color:#000"><?php echo $row["judul_berita"]; ?> - <?php echo $row["nama_internship"]; ?></h1>
+                        <h1 style="color:#000"><?php echo $row["judul_berita"]; ?></h1>
+                        <div class="nama-internship">(<?php echo $row["nama_internship"]; ?>)</div>
                         <p style="color:#000"><?php echo $row["deskripsi_berita"]; ?></p>
                     </div>
                     <div>
                         <img src="../../assets/storage/<?php echo $row["gambar_berita"]; ?>" alt="">
                         <div class="action-button">
                             <div class="delete">
-                                    <button id="deleteBtn">
-                                        <span>Delete</span>
-                                    </button>
+                                <button id="deleteBtn">
+                                    <span>Delete</span>
+                                </button>
                             </div>
                             <div class="edit">
                                 <a href="../../view/perusahaan/pageedit.php?id=<?php echo $row["id_berita"]; ?>">
-                                <button>
-                                    <span>Edit</span>
-                                </button>
+                                    <button>
+                                        <span>Edit</span>
+                                    </button>
                                 </a>
                             </div>
                         </div>

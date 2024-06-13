@@ -14,7 +14,7 @@ include '../../controllers/berita.php';
 <head>
     <meta charset="UTF-8">
     <title>Berita</title>
-    <link rel="stylesheet" href="../assets/css/style.css"> <!-- ganti dengan path CSS Anda -->
+    <link rel="stylesheet" href="../assets/css/style.css"> 
 </head>
 <body>
     <h1>Berita</h1>

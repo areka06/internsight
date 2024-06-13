@@ -396,7 +396,7 @@ include '../../controllers/berita.php';
 </style>
 <style>
     .Btn {
-        position: relative;
+        position: fixed;
         bottom: 40px;
         left: 550px;
         width: 50px;

@@ -325,7 +325,7 @@ include '../../controllers/tipsandtrick.php';
                 </div>
                 <div class="navbutton">
                     <a href="/internsight/view/pelamar/dashboard.php"><button>Home</button></a>
-                    <a href="/internsight/view/pelamar/internship.php"><button>Cari Kerja</button></a>
+                    <a href="/internsight/view/pelamar/internship.php"><button>Cari Internship</button></a>
                     <a href="/internsight/view/pelamar/tipsandtrick.php"><button>Tips & Tricks</button></a>
                     <a href="/internsight/view/pelamar/tentangkami.php"><button>Tentang Kami</button></a>
                 </div>

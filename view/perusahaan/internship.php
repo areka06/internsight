@@ -167,7 +167,8 @@ include '../../controllers/beritaperusahaan.php';
         height: auto;
         border-radius: 30px;
     }
-    .firstbox-title{
+
+    .firstbox-title {
         text-align: center;
         color: #000;
         font-family: "Space Grotesk", sans-serif;
@@ -176,6 +177,7 @@ include '../../controllers/beritaperusahaan.php';
         line-height: 90px;
         letter-spacing: -4px;
     }
+
     .firstbox span {
         display: flex;
         flex-direction: column;
@@ -376,9 +378,34 @@ include '../../controllers/beritaperusahaan.php';
     .left-col {
         display: flex;
         flex-wrap: wrap;
-        gap: 10px;
-        justify-content: space-between;
+        gap: 20px;
         width: 90%;
+    }
+</style>
+<style>
+    .button-create {
+        width: 150px;
+        left: 935px;
+        top: 20px;
+        position: relative;
+        border: 2px solid #2A83FD;
+        background-color: #2A83FD;
+        border-radius: 0.9em;
+        padding: 0.8em 1.2em 0.8em 1em;
+        transition: all ease-in-out 0.2s;
+        font-size: 16px;
+    }
+
+    .button-create span {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+        font-weight: 600;
+    }
+
+    .button-create:hover {
+        background-color: #0071e2;
     }
 </style>
 
@@ -409,6 +436,15 @@ include '../../controllers/beritaperusahaan.php';
             </div>
         </nav>
         <section class="container-firstbox">
+            <button class="button-create" onclick="window.location.href='/internsight/view/perusahaan/pagecreate.php'">
+                <span>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                        <path fill="none" d="M0 0h24v24H0z"></path>
+                        <path fill="currentColor" d="M11 11V5h2v6h6v2h-6v6h-2v-6H5v-2z"></path>
+                    </svg> Create
+                </span>
+            </button>
+
             <div class="firstbox">
                 <p class="firstbox-title">Siapkan Lowongan Kerja Untuk Insighters</p>
                 <div class="wrapper">
@@ -416,25 +452,25 @@ include '../../controllers/beritaperusahaan.php';
                         <?php
                         if ($result->num_rows > 0) {
                             while ($row = $result->fetch_assoc()) {
-                        ?>      
+                        ?>
                                 <!-- // status wrappers -->
                                 <div class="post">
-                                <a href="/internsight/view/perusahaan/pageinternship.php?id=<?php echo $row["id_berita"]; ?>">
-                                    <div class="news-image">
-                                        <img src='../../assets/storage/<?php echo $row["gambar_berita"]; ?>' class="post-image" alt="">
-                                    </div>
-                                    <div class="post-content">
-                                        <p class="title"><?php echo $row["judul_berita"]; ?></p>
-                                        <p class="description"><?php echo $row["deskripsi_berita"]; ?></p>
-                                        <div class="info">
-                                            <div class="user">
-                                                <div class="profile-pic"><img height="42px" src="https://medibase-software.nl/wp-content/uploads/2020/06/MedibaseSoftware_Team-Egee.png" alt=""></div>
-                                                <p class="username"><?php echo $row["nama_perusahaan"]; ?></p>
-                                            </div>
-                                            <img src="img/option.PNG" class="options" alt="">
+                                    <a href="/internsight/view/perusahaan/pageinternship.php?id=<?php echo $row["id_berita"]; ?>">
+                                        <div class="news-image">
+                                            <img src='../../assets/storage/<?php echo $row["gambar_berita"]; ?>' class="post-image" alt="">
                                         </div>
-                                        <p class="post-time"><?php echo $row["tanggal_awal"] . " hingga " . $row["tanggal_akhir"]; ?></p>
-                                    </div>
+                                        <div class="post-content">
+                                            <p class="title"><?php echo $row["judul_berita"]; ?></p>
+                                            <p class="description"><?php echo $row["deskripsi_berita"]; ?></p>
+                                            <div class="info">
+                                                <div class="user">
+                                                    <div class="profile-pic"><img height="42px" src="https://medibase-software.nl/wp-content/uploads/2020/06/MedibaseSoftware_Team-Egee.png" alt=""></div>
+                                                    <p class="username"><?php echo $row["nama_perusahaan"]; ?></p>
+                                                </div>
+                                                <img src="img/option.PNG" class="options" alt="">
+                                            </div>
+                                            <p class="post-time"><?php echo $row["tanggal_awal"] . " hingga " . $row["tanggal_akhir"]; ?></p>
+                                        </div>
                                     </a>
                                 </div>
                                 <!-- // +5 more post elements -->

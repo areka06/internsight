@@ -193,6 +193,12 @@ $result = $stmt->get_result();
         height: 800px;
     }
 
+    .nama-internship {
+        margin-bottom: 20px;
+        font-size: 20px;
+        font-family: poppins;
+    }
+
     .firstbox h1 {
         text-align: start;
         color: #000;
@@ -351,6 +357,63 @@ $result = $stmt->get_result();
         background-color: #FD2A6D;
     }
 </style>
+<style>
+    button {
+        margin-top: 20px;
+  font-family: poppins;
+  font-size: 20px;
+  background: royalblue;
+  color: white;
+  padding: 0.7em 1em;
+  padding-left: 0.9em;
+  display: flex;
+  align-items: center;
+  border: none;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+button span {
+  display: block;
+  margin-left: 0.3em;
+  transition: all 0.3s ease-in-out;
+}
+
+button svg {
+  display: block;
+  transform-origin: center center;
+  transition: transform 0.3s ease-in-out;
+}
+
+button:hover .svg-wrapper {
+  animation: fly-1 0.6s ease-in-out infinite alternate;
+}
+
+button:hover svg {
+  transform: translateX(1.2em) rotate(45deg) scale(1.1);
+}
+
+button:hover span {
+  transform: translateX(7em);
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+@keyframes fly-1 {
+  from {
+    transform: translateY(0.1em);
+  }
+
+  to {
+    transform: translateY(-0.1em);
+  }
+}
+
+</style>
 
 <body>
     <?php if ($result->num_rows > 0) {
@@ -364,10 +427,10 @@ $result = $stmt->get_result();
                             <img src="../../../internsight/assets/logo.png" class="logoimg">
                         </div>
                         <a href="/internsight/view/pelamar/internship.php">
-                        <div>
-                            <p1>InternSight</p1>
-                            <!-- <p2>INFORMATION</p2> -->
-                        </div>
+                            <div>
+                                <p1>InternSight</p1>
+                                <!-- <p2>INFORMATION</p2> -->
+                            </div>
                         </a>
                     </div>
                     <a href="../public/logout.php">
@@ -383,20 +446,35 @@ $result = $stmt->get_result();
                 <div class="firstbox">
 
                     <div class="content-berita">
-                        <h1 style="color:#000"><?php echo $row["judul_berita"]; ?> - <?php echo $row["nama_internship"]; ?></h1>
+                        <h1 style="color:#000"><?php echo $row["judul_berita"]; ?></h1>
+                        <div class="nama-internship">(<?php echo $row["nama_internship"]; ?>)</div>
                         <p style="color:#000"><?php echo $row["deskripsi_berita"]; ?></p>
                     </div>
-                    <div>
-                        <img src="../../assets/storage/<?php echo $row["gambar_berita"]; ?>" alt="">    
+                    <div style="display: flex; flex-direction: column;">
+                        <img src="../../assets/storage/<?php echo $row["gambar_berita"]; ?>" alt="">
+                        <button onclick="sendEmail()">
+                            <div class="svg-wrapper-1">
+                                <div class="svg-wrapper">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                                        <path fill="none" d="M0 0h24v24H0z"></path>
+                                        <path fill="currentColor" d="M1.946 9.315c-.522-.174-.527-.455.01-.634l19.087-6.362c.529-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8-8 6-8.054-2.685z"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <span>Send Email</span>
+                        </button>
                     </div>
                 </div>
-                <!-- <div class="secondbox">
 
-                </div> -->
             </section>
         <?php } else {
         echo "No details found for this information.";
     } ?>
-</body>
 
+</body>
+<script>
+                            function sendEmail() {
+                                window.location.href = "mailto:internsight@gmail.com?subject=Subjek%20Email&body=Isi%20pesan%20anda%20disini";
+                            }
+                        </script>
 </html>

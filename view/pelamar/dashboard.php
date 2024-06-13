@@ -486,7 +486,6 @@ if ($_SESSION['role'] !== 'pelamar') {
 
     /* fifthbox */
     .fifthbox {
-        /* background-color: #000; */
         width: 100%;
         height: auto;
         display: flex;
@@ -524,12 +523,11 @@ if ($_SESSION['role'] !== 'pelamar') {
                     </div>
                     <div>
                         <p1>InternSight</p1>
-                        <!-- <p2>INFORMATION</p2> -->
                     </div>
                 </div>
                 <div class="navbutton">
                     <a href="/internsight/view/pelamar/dashboard.php"><button>Home</button></a>
-                    <a href="/internsight/view/pelamar/internship.php"><button>Cari Kerja</button></a>
+                    <a href="/internsight/view/pelamar/internship.php"><button>Cari Internship</button></a>
                     <a href="/internsight/view/pelamar/tipsandtrick.php"><button>Tips & Tricks</button></a>
                     <a href="/internsight/view/pelamar/tentangkami.php"><button>Tentang Kami</button></a>
                 </div>
@@ -552,13 +550,7 @@ if ($_SESSION['role'] !== 'pelamar') {
                         <img src="../../assets/sparkle.png" class="sparkle">
                     </div>
                     <div class="teamcontainer">
-                        <!-- <div class="card1">
-                            <button>Cari Kerja</button>
-                        </div> -->
                         <img src="https://asaprentals.com.au/wp-content/uploads/2020/10/team.png" alt="" class="team">
-                        <!-- <div class="card2">
-                            <button>Cari Kerja</button>
-                        </div> -->
                     </div>
                 </span>
 
@@ -572,9 +564,9 @@ if ($_SESSION['role'] !== 'pelamar') {
                         <a href="internship.php">
                             <div class="card">
                                 <div class="content">
-                                    <p class="heading">Saya Mencari Pekerjaan</p>
+                                    <p class="heading">Saya Mencari Internship</p>
                                     <p class="para">
-                                        Cari Loker Aman Yang Sesuai Untukmu!
+                                        Cari Internship Aman Yang Sesuai Untukmu!
                                     </p>
                                 </div>
                             </div>
@@ -610,7 +602,7 @@ if ($_SESSION['role'] !== 'pelamar') {
             </div>
             <div class="secondbox">
                 <span>
-                    <p>Platform Yang Tepat Untuk Mencari Lowongan Pekerjaan</p>
+                    <p>Platform Yang Tepat Untuk Mencari Lowongan Internship</p>
                 </span>
             </div>
             <div class="thirdbox">
@@ -641,7 +633,7 @@ if ($_SESSION['role'] !== 'pelamar') {
                         </div>
                         <div class="list1">
                             <img src="../../../internsight/assets/sparkle2.png" alt="" class="sparkle2">
-                            <p>Kredibilitas Pekerjaan</p>
+                            <p>Kredibilitas Internship</p>
                         </div>
                         <div class="list1">
                             <img src="../../../internsight/assets/sparkle2.png" alt="" class="sparkle2">

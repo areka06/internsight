@@ -6,12 +6,10 @@ if ($_SESSION['role'] != 'perusahaan') {
 }
 ?>
 <?php
-include '../../controllers/editinternship.php';
-?>
-<?php
 include '../../controllers/createinternship.php';
 $categories = getCategories($conn);
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -160,7 +158,7 @@ $categories = getCategories($conn);
         flex-direction: row;
         justify-content: center;
         width: auto;
-        height: 1700px;
+        height: 2000px;
         border-radius: 30px 30px 0 0;
         padding-top: 30px;
         background-repeat: no-repeat;
@@ -219,7 +217,7 @@ $categories = getCategories($conn);
         background: #fff;
         border: 1px solid #dfdfdf;
         border-radius: 10px;
-        margin-top: 10px;
+        margin-top: 20px;
         box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
         font-family: 'poppins', sans-serif;
     }
@@ -360,6 +358,15 @@ $categories = getCategories($conn);
         justify-content: space-between;
         width: 90%;
     }
+
+    .form-berita {
+        display: flex;
+        justify-content: center;
+    }
+
+    .preview img {
+        border-radius: 12px;
+    }
 </style>
 <style>
     .button {
@@ -483,7 +490,7 @@ $categories = getCategories($conn);
         /* file */
         background-color: #fff;
         /* box-shadow: 0 10px 60px rgb(218, 229, 255); */
-        border: 1px solid #DDD;
+
         border-radius: 20px;
         padding: 2rem .7rem .7rem .7rem;
         text-align: center;
@@ -567,152 +574,98 @@ $categories = getCategories($conn);
 </style>
 
 <body>
-    <?php
-    if ($result->num_rows > 0) {
-        $row = $result->fetch_assoc();
-
-        $judul_berita = $row['judul_berita'];
-        $nama_internship = $row['nama_internship'];
-        $deskripsi_berita = $row['deskripsi_berita'];
-        $tanggal_awal = $row['tanggal_awal'];
-        $tanggal_akhir = $row['tanggal_akhir'];
-        $gambar_berita = $row['gambar_berita']
-    ?>
-        <div class="container">
-            <nav>
-                <div class="navbar">
-                    <div class="logo">
-                        <div>
-                            <img src="../../assets/logo.png" class="logoimg">
-                        </div>
-                        <a href="/internsight/view/perusahaan/pageinternship.php?id=<?php echo $row["id_berita"]; ?>">
-                            <div>
-                                <p1>InternSight</p1>
-                                <!-- <p2>INFORMATION</p2> -->
-                            </div>
-                        </a>
+    <div class="container">
+        <nav>
+            <div class="navbar">
+                <div class="logo">
+                    <div>
+                        <img src="../../assets/logo.png" class="logoimg">
                     </div>
-                    <a href="/internsight/public/logout.php">
-                        <div class="navbox">
-                            <span>
-                                <p>Logout</p>
-                            </span>
+                    <a href="/internsight/view/perusahaan/internship.php">
+                        <div>
+                            <p1>InternSight</p1>
                         </div>
                     </a>
                 </div>
-            </nav>
-            <section>
-                <div class="firstbox">
-                    <div class="content-berita">
-                        <!-- <h1 style="color:#000">Edit Your Data</h1>
-                        <p style="color:#000"></p> -->
-                        <div>
-                            <form class="form" action="../../controllers/posteditinternship.php" method="POST" enctype="multipart/form-data">
-                                <div class="container">
-                                    <div class="modal">
-                                        <div class="modal__header">
-                                            <span class="modal__title">Mengedit Internship</span><button class="button button--icon"><svg width="24" viewBox="0 0 24 24" height="24" xmlns="http://www.w3.org/2000/svg">
-                                                    <path fill="none" d="M0 0h24v24H0V0z"></path>
-                                                    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z">
-                                                    </path>
-                                                </svg></button>
-                                        </div>
-                                        <div class="modal__body">
-                                            <input type="hidden" name="id_berita" value="<?php echo $row['id_berita']; ?>">
-                                            <input type="hidden" name="id_perusahaan" value="<?php echo isset($_SESSION['id_perusahaan']) ? $_SESSION['id_perusahaan'] : ''; ?>">
-                                            <div class="input">
-                                                <label class="input__label">Judul Internship</label>
-                                                <input class="input__field" type="text" name="judul_berita" value="<?php echo $judul_berita; ?>">
-                                                <p class="input__description">The title must contain a maximum of 32 characters</p>
-                                            </div>
-                                            <div class="input">
-                                                <label class="input__label">Nama Intersnhip</label>
-                                                <input class="input__field" type="text" name="nama_internship" value="<?php echo $nama_internship; ?>">
-                                                <p class="input__description">The title must contain a maximum of 32 characters</p>
-                                            </div>
-                                            <div class="input">
-                                                <label class="input__label">Deskripsi Lowongan</label>
-                                                <textarea class="input__field input__field--textarea" name="deskripsi_berita"><?php echo $deskripsi_berita; ?></textarea>
-                                                <p class="input__description">Give your vacancy a good description so everyone know what's it for</p>
-                                            </div>
-                                            <div class="input">
-                                                <label class="input__label">Tanggal Awal</label>
-                                                <input class="input_field input__field input__field--textarea" type='date' name="tanggal_awal" value="<?php echo $tanggal_awal; ?>">
-                                            </div>
-                                            <div class="input">
-                                                <label class="input__label">Tanggal Akhir</label>
-                                                <input class="input_field input__field input__field--textarea" type='date' name="tanggal_akhir" value="<?php echo $tanggal_akhir; ?>">
-                                            </div>
-                                            <div class="input">
-                                                <label class="input__label">Kategori</label>
-                                                <select class="input__field" name="id_kategori">
-                                                    <?php
-                                                    foreach ($categories as $category) {
-                                                        echo "<option value='{$category['id_kategori']}'>{$category['kategori']}</option>";
-                                                    }
-                                                    ?>
-                                                </select>
-                                                <p class="input__description">Select a category for the news</p>
-                                            </div>
-                                            <div class="input">
-                                                <label class="input__label">Gambar Internship</label>
-                                                <form class="form">
-                                                    <span class="form-title">Upload your file</span>
-                                                    <p class="form-paragraph">
-                                                        File should be an image
-                                                    </p>
-                                                    <label for="file-input" class="drop-container">
-                                                        <span class="drop-title">Drop files here</span>
-                                                        or
-                                                        <input type="file" accept="image/*" id="file-input" name="gambar_berita" value="sdada">
-                                                        <div class="preview" id="preview">
-                                                        </div>
-                                                        <?php echo $gambar_berita; ?>
-                                                    </label>
-                                                </form>
-                                                <p class="input__description">Drop a Job Image that matches the description</p>
-                                            </div>
-                                        </div>
-                                        <div class="modal__footer">
-                                            <button class="button button--primary">Change project</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
+                <a href="/internsight/public/logout.php">
+                    <div class="navbox">
+                        <span>
+                            <p>Logout</p>
+                        </span>
                     </div>
-                    <div class="card-container">
-                        <div class="post">
-                            <a href="/internsight/view/perusahaan/pageinternship.php?id=<?php echo $row["id_berita"]; ?>">
-                                <div class="news-image">
-                                    <img src='../../assets/storage/<?php echo $row["gambar_berita"]; ?>' class="post-image" alt="">
-                                </div>
-                                <div class="post-content">
-                                    <p class="title"><?php echo $row["judul_berita"]; ?></p>
-                                    <p class="description"><?php echo $row["deskripsi_berita"]; ?></p>
-                                    <div class="info">
-                                        <div class="user">
-                                            <div class="profile-pic"><img height="42px" src="https://medibase-software.nl/wp-content/uploads/2020/06/MedibaseSoftware_Team-Egee.png" alt=""></div>
-                                            <p class="username"><?php echo $row["nama_perusahaan"]; ?></p>
-                                        </div>
-                                        <img src="img/option.PNG" class="options" alt="">
+                </a>
+            </div>
+        </nav>
+        <section>
+            <div class="firstbox">
+                <div class="content-berita">
+                    <div class="form-berita">
+                        <form class="form" action="../../controllers/postcreateinternship.php" method="POST" enctype="multipart/form-data">
+                            <div class="container">
+                                <div class="modal">
+                                    <input type="hidden" name="id_perusahaan" value="<?php echo isset($_SESSION['id_perusahaan']) ? $_SESSION['id_perusahaan'] : ''; ?>">
+                                    <div class="modal__header">
+                                        <span class="modal__title">Create New Internship</span>
                                     </div>
-                                    <p class="post-time"><?php echo $row["tanggal_awal"] . " hingga " . $row["tanggal_akhir"]; ?></p>
+                                    <div class="modal__body">
+                                        <div class="input">
+                                            <label class="input__label">Judul Internship</label>
+                                            <input class="input__field" type="text" name="judul_berita" required>
+                                            <p class="input__description">The title must contain a maximum of 32 characters</p>
+                                        </div>
+                                        <div class="input">
+                                            <label class="input__label">Nama Internship</label>
+                                            <input class="input__field" type="text" name="nama_internship" required>
+                                            <p class="input__description">The title must contain a maximum of 32 characters</p>
+                                        </div>
+                                        <div class="input">
+                                            <label class="input__label">Deskripsi Lowongan</label>
+                                            <textarea class="input__field input__field--textarea" name="deskripsi_berita" required></textarea>
+                                            <p class="input__description">Give your vacancy a good description so everyone knows what's it for</p>
+                                        </div>
+                                        <div class="input">
+                                            <label class="input__label">Tanggal Awal</label>
+                                            <input class="input_field input__field input__field--textarea" type='date' name="tanggal_awal" required>
+                                        </div>
+                                        <div class="input">
+                                            <label class="input__label">Tanggal Akhir</label>
+                                            <input class="input_field input__field input__field--textarea" type='date' name="tanggal_akhir" required>
+                                        </div>
+                                        <div class="input">
+                                            <label class="input__label">Kategori</label>
+                                            <select class="input__field" name="id_kategori">
+                                                <?php
+                                                foreach ($categories as $category) {
+                                                    echo "<option value='{$category['id_kategori']}'>{$category['kategori']}</option>";
+                                                }
+                                                ?>
+                                            </select>
+                                            <p class="input__description">Select a category for the news</p>
+                                        </div>
+                                        <div class="input">
+                                            <label class="input__label">Gambar Internship</label>
+                                            <label for="file-input" class="drop-container">
+                                                <span class="drop-title">Drop files here</span>
+                                                or
+                                                <input type="file" accept="image/*" id="file-input" name="gambar_berita" required>
+                                                <div class="preview" id="preview">
+                                                </div>
+                                            </label>
+                                            <p class="input__description">Drop a Job Image that matches the description</p>
+                                        </div>
+                                    </div>
+                                    <div class="modal__footer">
+                                        <button class="button button--primary">Create Internship</button>
+                                    </div>
+
                                 </div>
-                            </a>
-                        </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
-                <!-- <div class="secondbox">
-
-                </div> -->
-            </section>
-
-        <?php
-    } else {
-        echo "No news found with the provided ID.";
-    }
-        ?>
+            </div>
+        </section>
+    </div>
 </body>
 <script>
     document.getElementById('file-input').addEventListener('change', function(event) {

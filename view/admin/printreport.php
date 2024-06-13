@@ -24,11 +24,11 @@ include '../../controllers/berita.php';
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
 </head>
 <style>
-    body{
+    body {
         display: flex;
         justify-content: center;
     }
-    main{
+    main {
         width: 1000px;
     }
     .graph {
@@ -39,7 +39,6 @@ include '../../controllers/berita.php';
         width: 100%;
         margin-bottom: 100px;
     }
-
     .graph h2 {
         font-family: poppins;
     }
@@ -175,8 +174,8 @@ include '../../controllers/berita.php';
                         margin: 0.5,
                         filename: 'Report_InternSight.pdf',
                         image: { type: 'jpeg', quality: 0.98 },
-                        html2canvas: { scale: 2 },
-                        jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+                        html2canvas: { scale: 3, logging: true, useCORS: true },
+                        jsPDF: { unit: 'in', format: 'a3', orientation: 'portrait' }
                     };
 
                     html2pdf().from(element).set(opt).save().then(() => {
@@ -187,7 +186,7 @@ include '../../controllers/berita.php';
                             window.open('', '_self').close();
                         }, 1000); // Adjust the timeout if needed
                     });
-                }, 3000); // 3-second delay
+                }, 500); // 3-second delay
             });
         });
     </script>

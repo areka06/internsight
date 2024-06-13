@@ -13,7 +13,8 @@ $query = $conn->prepare('
     SELECT berita.*, akun_perusahaan.nama_perusahaan 
     FROM berita 
     JOIN akun_perusahaan ON berita.id_perusahaan = akun_perusahaan.id_perusahaan 
-    WHERE berita.id_perusahaan = ?'
+    WHERE berita.id_perusahaan = ?
+    ORDER BY berita.id_berita DESC' // Menambahkan ORDER BY dengan id_berita dalam urutan descending
 );
 $query->bind_param('i', $id_perusahaan);
 $query->execute();
@@ -21,4 +22,5 @@ $result = $query->get_result();
 
 if ($result === false) {
     die("Query failed: " . $conn->error);
-}?>
+}
+?>

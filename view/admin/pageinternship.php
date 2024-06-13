@@ -192,7 +192,11 @@ $result = $stmt->get_result();
         margin-right: 80px;
         height: 800px;
     }
-
+    .nama-internship{
+        margin-bottom: 20px;
+        font-size: 20px;
+        font-family: poppins;
+    }
     .firstbox h1 {
         text-align: start;
         color: #000;
@@ -364,10 +368,10 @@ $result = $stmt->get_result();
                             <img src="../../assets/logo.png" class="logoimg">
                         </div>
                         <a href="/internsight/view/admin/internship.php">
-                        <div>
-                            <p1>InternSight</p1>
-                            <!-- <p2>INFORMATION</p2> -->
-                        </div>
+                            <div>
+                                <p1>InternSight</p1>
+                                <!-- <p2>INFORMATION</p2> -->
+                            </div>
                         </a>
                     </div>
                     <a href="../public/logout.php">
@@ -383,25 +387,12 @@ $result = $stmt->get_result();
                 <div class="firstbox">
 
                     <div class="content-berita">
-                        <h1 style="color:#000"><?php echo $row["judul_berita"]; ?> - <?php echo $row["nama_internship"]; ?></h1>
+                        <h1 style="color:#000"><?php echo $row["judul_berita"]; ?></h1>
+                        <div class="nama-internship">(<?php echo $row["nama_internship"]; ?>)</div>
                         <p style="color:#000"><?php echo $row["deskripsi_berita"]; ?></p>
                     </div>
                     <div>
                         <img src="../../assets/storage/<?php echo $row["gambar_berita"]; ?>" alt="">
-                        <div class="action-button">
-                            <div class="delete">
-                                    <button id="deleteBtn">
-                                        <span>Delete</span>
-                                    </button>
-                            </div>
-                            <div class="edit">
-                                <a href="../../view/perusahaan/pageedit.php?id=<?php echo $row["id_berita"]; ?>">
-                                <button>
-                                    <span>Edit</span>
-                                </button>
-                                </a>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <!-- <div class="secondbox">
@@ -411,45 +402,6 @@ $result = $stmt->get_result();
         <?php } else {
         echo "No details found for this information.";
     } ?>
-        <div class="modal-bg" id="modal-bg">
-            <!-- Modal Content -->
-            <div class="modal" id="modal">
-                <h2>Are you sure you want to delete this internship?</h2>
-                <button class="cancel" id="cancelBtn">Cancel</button>
-                <a href="/../controllers/deleteinternship.php?id=<?php echo $row["id_berita"]; ?>">
-                    <button id="confirmBtn">Ok</button>
-                </a>
-            </div>
-        </div>
 </body>
-<script>
-    // Ambil elemen-elemen yang diperlukan
-    const modalBg = document.getElementById('modal-bg');
-    const modal = document.getElementById('modal');
-    const confirmBtn = document.getElementById('confirmBtn');
-    const cancelBtn = document.getElementById('cancelBtn');
-    const deleteBtn = document.getElementById('deleteBtn');
-
-    // Tambahkan event listener ke tombol hapus
-    deleteBtn.addEventListener('click', function() {
-        // Tampilkan modal
-        modalBg.style.display = 'flex';
-    });
-
-    // Tambahkan event listener ke tombol konfirmasi
-    confirmBtn.addEventListener('click', function() {
-        // Lakukan aksi hapus (misalnya, dengan AJAX)
-        // Setelah selesai, sembunyikan modal
-        modalBg.style.display = 'none';
-        // Redirect atau lakukan aksi lainnya
-        // window.location.href = '/internsight/controllers/deleteinternship.php?id=<?php echo $row["id_berita"]; ?>';
-    });
-
-    // Tambahkan event listener ke tombol batal
-    cancelBtn.addEventListener('click', function() {
-        // Sembunyikan modal jika tombol batal ditekan
-        modalBg.style.display = 'none';
-    });
-</script>
 
 </html>
